@@ -1,295 +1,88 @@
 <!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ReportVault</title>
+    <title>ReportVault</title>
+    <style>
+        body {
+            background: #020617;
+            color: white;
+            font-family: Segoe UI, Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+        }
 
-<style>
+        .hero {
+            padding: 100px 20px;
+        }
 
-*{
-    margin:0;
-    padding:0;
-    box-sizing:border-box;
-    font-family:'Segoe UI',sans-serif;
-}
+        .logo {
+            font-size: 60px;
+            font-weight: bold;
+        }
 
-html{
-    scroll-behavior:smooth;
-}
+        .tagline {
+            color: #60a5fa;
+            font-size: 28px;
+            margin-top: 10px;
+        }
 
-body{
-    background:#020617;
-    color:#ffffff;
-}
+        .card {
+            background: #0a0f1c;
+            width: 80%;
+            max-width: 900px;
+            margin: 20px auto;
+            padding: 25px;
+            border-radius: 12px;
+        }
 
-nav{
-    position:sticky;
-    top:0;
-    z-index:1000;
-    background:#030712;
-    padding:18px;
-    text-align:center;
-    border-bottom:1px solid #1e293b;
-}
+        h2 {
+            color: #60a5fa;
+        }
 
-nav a{
-    color:white;
-    text-decoration:none;
-    margin:0 18px;
-    font-weight:600;
-}
-
-nav a:hover{
-    color:#60a5fa;
-}
-
-.hero{
-    text-align:center;
-    padding:100px 20px;
-    background:linear-gradient(180deg,#020617,#071224);
-}
-
-.logo{
-    font-size:72px;
-    font-weight:900;
-    color:white;
-    margin-bottom:15px;
-}
-
-.tagline{
-    font-size:32px;
-    color:#60a5fa;
-}
-
-.stats{
-    display:flex;
-    justify-content:center;
-    flex-wrap:wrap;
-    gap:20px;
-    margin-top:40px;
-}
-
-.stat-box{
-    width:220px;
-    background:#0a0f1c;
-    border:1px solid #13213a;
-    border-radius:14px;
-    padding:20px;
-}
-
-.stat-box h2{
-    color:#60a5fa;
-    margin-bottom:10px;
-}
-
-.container{
-    max-width:1200px;
-    margin:auto;
-    padding:30px;
-}
-
-.card{
-    background:#0a0f1c;
-    border:1px solid #13213a;
-    border-radius:16px;
-    padding:30px;
-    margin-bottom:25px;
-}
-
-.card h2{
-    color:#60a5fa;
-    margin-bottom:15px;
-}
-
-.card p,
-.card li{
-    color:#d1d5db;
-    line-height:1.8;
-}
-
-.card ul{
-    padding-left:20px;
-}
-
-.grid{
-    display:grid;
-    grid-template-columns:repeat(auto-fit,minmax(320px,1fr));
-    gap:20px;
-}
-
-.portal{
-    background:#0f172a;
-    border:1px solid #1e293b;
-    border-radius:16px;
-    padding:25px;
-}
-
-.portal h3{
-    color:#60a5fa;
-    margin-bottom:10px;
-}
-
-.btn{
-    background:#0f3d75;
-    color:white;
-    border:none;
-    padding:12px 20px;
-    border-radius:8px;
-    cursor:pointer;
-    margin-top:12px;
-}
-
-.btn:hover{
-    background:#2563eb;
-}
-
-footer{
-    background:#030712;
-    text-align:center;
-    padding:25px;
-    color:#94a3b8;
-    margin-top:40px;
-}
-
-</style>
+        footer {
+            background: #030712;
+            padding: 20px;
+            margin-top: 30px;
+        }
+    </style>
 </head>
-
 <body>
 
-<nav>
-    #homeHome</a>
-    #about
-    #services
-    ">Reports</a>
-    #contact>
-</nav>
-
-<section id="home" class="hero">
-
-<div class="logo">
-    ReportVault
+<div class="hero">
+    <div class="logo">ReportVault</div>
+    <div class="tagline">Secure. Store. Analyze.</div>
 </div>
-
-<div class="tagline">
-    Secure. Store. Analyze.
-</div>
-
-<div class="stats">
-
-<div class="stat-box">
-    <h2>150+</h2>
-    <p>Reports Managed</p>
-</div>
-
-<div class="stat-box">
-    <h2>500+</h2>
-    <p>Dashboards Available</p>
-</div>
-
-<div class="stat-box">
-    <h2>99.9%</h2>
-    <p>Data Accuracy</p>
-</div>
-
-</div>
-
-</section>
-
-<div class="container">
-
-<section id="about">
 
 <div class="card">
-
-<h2>About ReportVault</h2>
-
-<p>
-ReportVault is a centralized platform for managing reports,
-analytics, dashboards and secure business information.
-</p>
-
+    <h2>About ReportVault</h2>
+    <p>
+        ReportVault is a secure platform for managing reports,
+        dashboards and business analytics.
+    </p>
 </div>
-
-</section>
-
-<section id="services">
 
 <div class="card">
-
-<h2>Services</h2>
-
-<ul>
-<li>Financial Reporting</li>
-<li>Business Analytics</li>
-<li>KPI Dashboards</li>
-<li>Forecasting & Planning</li>
-<li>Management Reporting</li>
-<li>Performance Tracking</li>
-<li>Secure Document Storage</li>
-<li>Data Visualization</li>
-</ul>
-
+    <h2>Services</h2>
+    <ul style="text-align:left;display:inline-block;">
+        <li>Financial Reporting</li>
+        <li>Business Analytics</li>
+        <li>KPI Dashboards</li>
+        <li>Document Management</li>
+    </ul>
 </div>
-
-</section>
-
-<section id="reports">
 
 <div class="card">
-
-<h2>Reports & Dashboard Center</h2>
-
-<div class="grid">
-
-<div class="portal">
-
-<h3>Reports Center</h3>
-
-<p>
-View and organize reports, reporting packs, PDFs and business documents.
-</p>
-
-<button class="btn">View Reports</button>
-
+    <h2>Reports Center</h2>
+    <button>View Reports</button>
 </div>
-
-<div class="portal">
-
-<h3>Dashboard Center</h3>
-
-<p>
-Access dashboards, KPIs and business performance analytics.
-</p>
-
-<button class="btn">Open Dashboard</button>
-
-</div>
-
-</div>
-
-</div>
-
-</section>
-
-<section id="contact">
 
 <div class="card">
-
-<h2>Contact Information</h2>
-
-<p><strong>Company:</strong> ReportVault</p>
-<p><strong>Email:</strong> contact@reportvault.com</p>
-<p><strong>Location:</strong> Bengaluru, India</p>
-
-</div>
-
-</section>
-
+    <h2>Dashboard Center</h2>
+    <button>Open Dashboard</button>
 </div>
 
 <footer>
-© 2026 ReportVault | Secure. Store. Analyze.
+    © 2026 ReportVault | Secure. Store. Analyze.
 </footer>
 
 </body>
