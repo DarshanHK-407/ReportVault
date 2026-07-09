@@ -3,21 +3,18 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ReportVault</title>
+<title>ReportVault | Darshan H K</title>
 
 <style>
 
 :root{
     --bg-primary:#0F172A;
     --bg-secondary:#1E293B;
-
     --primary-blue:#3B82F6;
     --accent-purple:#8B5CF6;
     --highlight-pink:#EC4899;
-
     --text-primary:#F8FAFC;
     --text-muted:#94A3B8;
-
     --border:#334155;
 }
 
@@ -25,10 +22,10 @@
     margin:0;
     padding:0;
     box-sizing:border-box;
+    font-family:'Segoe UI',sans-serif;
 }
 
 body{
-    font-family:'Segoe UI',sans-serif;
     background:var(--bg-primary);
     color:var(--text-primary);
     line-height:1.6;
@@ -38,7 +35,7 @@ body{
 
 .hero{
     text-align:center;
-    padding:120px 20px;
+    padding:100px 20px;
     background:linear-gradient(
         135deg,
         #0F172A 0%,
@@ -47,59 +44,49 @@ body{
     );
 }
 
-.hero h1{
-    font-size:5rem;
+.logo-box{
+    position:relative;
+    max-width:1000px;
+    margin:auto;
+}
+
+.money-bg{
+    position:absolute;
+    left:50%;
+    top:50%;
+    transform:translate(-50%,-50%);
+    font-size:140px;
     font-weight:800;
-    margin-bottom:10px;
+    color:rgba(59,130,246,0.08);
+    letter-spacing:20px;
+    pointer-events:none;
+    user-select:none;
 }
 
-.hero p{
-    font-size:1.8rem;
-    color:var(--primary-blue);
-    margin-bottom:40px;
+.logo-title{
+    position:relative;
+    z-index:2;
+    font-size:6rem;
+    font-weight:800;
+    color:#F8FAFC;
+    text-shadow:0 0 25px rgba(59,130,246,.2);
 }
 
-.hero-buttons{
-    display:flex;
-    justify-content:center;
-    gap:20px;
-    flex-wrap:wrap;
+.logo-tagline{
+    position:relative;
+    z-index:2;
+    font-size:2rem;
+    margin-top:10px;
+    color:#94A3B8;
 }
 
-/* BUTTONS */
-
-.btn-primary,
-.btn-secondary{
-    text-decoration:none;
-    color:white;
-    padding:14px 30px;
-    border-radius:12px;
-    font-weight:600;
-    transition:.3s ease;
+.creator{
+    margin-top:25px;
+    color:#94A3B8;
+    font-size:1rem;
 }
 
-.btn-primary{
-    background:linear-gradient(
-        135deg,
-        var(--primary-blue),
-        var(--accent-purple)
-    );
-}
-
-.btn-secondary{
-    background:linear-gradient(
-        135deg,
-        var(--accent-purple),
-        var(--highlight-pink)
-    );
-}
-
-.btn-primary:hover,
-.btn-secondary:hover{
-    transform:translateY(-3px);
-}
-
-/* SECTION */
+/* SECTIONS */
 
 .section{
     padding:70px 20px;
@@ -112,27 +99,25 @@ body{
 
 .section-title{
     text-align:center;
-    font-size:2.3rem;
-    margin-bottom:35px;
     color:var(--primary-blue);
+    font-size:2.2rem;
+    margin-bottom:30px;
 }
-
-/* CARD */
 
 .card{
     background:var(--bg-secondary);
     border:1px solid var(--border);
     border-radius:20px;
-    padding:40px;
-    transition:0.3s;
+    padding:35px;
+    transition:.3s;
 }
 
 .card:hover{
-    transform:translateY(-4px);
-    box-shadow:0 10px 25px rgba(59,130,246,.15);
+    transform:translateY(-5px);
+    box-shadow:0 10px 30px rgba(59,130,246,.15);
 }
 
-/* KPIs */
+/* KPI */
 
 .stats{
     display:grid;
@@ -145,22 +130,22 @@ body{
     border:1px solid var(--border);
     border-radius:18px;
     padding:30px;
-    transition:.3s;
+    text-align:center;
 }
 
 .stat-card:hover{
     transform:translateY(-5px);
-    box-shadow:0 10px 30px rgba(59,130,246,.2);
 }
 
 .stat-card h3{
     color:var(--text-muted);
-    margin-bottom:15px;
 }
 
 .stat-card span{
+    display:block;
+    margin-top:12px;
     font-size:2.5rem;
-    font-weight:700;
+    font-weight:bold;
     color:var(--primary-blue);
 }
 
@@ -176,24 +161,18 @@ body{
     background:var(--bg-secondary);
     border:1px solid var(--border);
     border-radius:18px;
-    padding:35px;
     text-align:center;
-    transition:.3s;
+    padding:35px;
 }
 
 .service-card:hover{
     border-color:var(--accent-purple);
-    transform:translateY(-5px);
     box-shadow:0 10px 25px rgba(139,92,246,.25);
 }
 
 .service-icon{
     font-size:40px;
     margin-bottom:15px;
-}
-
-.service-card h3{
-    margin-bottom:10px;
 }
 
 /* ACTIONS */
@@ -212,62 +191,68 @@ body{
     text-align:center;
 }
 
-.action-card h2{
-    margin-bottom:20px;
-    color:var(--primary-blue);
-}
-
 /* FOOTER */
 
 footer{
-    text-align:center;
-    padding:35px;
     background:#09101d;
     border-top:1px solid var(--border);
+    text-align:center;
+    padding:40px;
     color:var(--text-muted);
 }
 
-/* RESPONSIVE */
+footer strong{
+    color:#F8FAFC;
+}
+
+/* MOBILE */
 
 @media(max-width:768px){
 
-.hero h1{
-    font-size:3rem;
+.logo-title{
+    font-size:3.5rem;
 }
 
-.hero p{
+.logo-tagline{
     font-size:1.2rem;
 }
 
-.section-title{
-    font-size:1.8rem;
+.money-bg{
+    font-size:70px;
 }
 
 }
 
 </style>
 </head>
-<body>
 
-<!-- HERO -->
+<body>
 
 <section class="hero">
 
-    <h1>ReportVault</h1>
+    <div class="logo-box">
 
-    <p>Secure. Store. Analyze.</p>
+        <div class="money-bg">
+            $$$
+        </div>
 
-    <div class="hero-buttons">
-        #">View Reports</a>
-        # class="btn-secondary">Open Dashboard</a>
+        <h1 class="logo-title">
+            ReportVault
+        </h1>
+
+        <p class="logo-tagline">
+            Secure. Store. Analyze.
+        </p>
+
+    </div>
+
+    <div class="creator">
+        Created & Developed by Darshan H K
     </div>
 
 </section>
 
-<!-- KPI SECTION -->
-
 <section class="section">
-
     <div class="container">
 
         <div class="stats">
@@ -295,10 +280,7 @@ footer{
         </div>
 
     </div>
-
 </section>
-
-<!-- ABOUT -->
 
 <section class="section">
 
@@ -309,50 +291,52 @@ footer{
         </h2>
 
         <div class="card">
-            <p style="font-size:1.15rem;text-align:center;">
+
+            <p style="text-align:center;font-size:1.1rem;">
                 ReportVault is a secure platform for managing reports,
                 dashboards and business analytics. Store valuable business
-                information, access interactive dashboards, generate insights,
+                information, access interactive dashboards, generate insights
                 and collaborate efficiently through a centralized reporting hub.
             </p>
+
         </div>
 
     </div>
 
 </section>
 
-<!-- SERVICES -->
-
 <section class="section">
 
     <div class="container">
 
-        <h2 class="section-title">Services</h2>
+        <h2 class="section-title">
+            Services
+        </h2>
 
         <div class="services">
 
             <div class="service-card">
                 <div class="service-icon">📊</div>
                 <h3>Financial Reporting</h3>
-                <p>Create and manage financial reports efficiently.</p>
+                <p>Create and manage reports efficiently.</p>
             </div>
 
             <div class="service-card">
                 <div class="service-icon">📈</div>
                 <h3>Business Analytics</h3>
-                <p>Transform business data into actionable insights.</p>
+                <p>Transform data into meaningful insights.</p>
             </div>
 
             <div class="service-card">
                 <div class="service-icon">🎯</div>
                 <h3>KPI Dashboards</h3>
-                <p>Monitor critical performance metrics in real time.</p>
+                <p>Monitor business performance in real time.</p>
             </div>
 
             <div class="service-card">
                 <div class="service-icon">📁</div>
                 <h3>Document Management</h3>
-                <p>Securely organize and manage business documents.</p>
+                <p>Store and organize important files securely.</p>
             </div>
 
         </div>
@@ -360,8 +344,6 @@ footer{
     </div>
 
 </section>
-
-<!-- REPORTS & DASHBOARD -->
 
 <section class="section">
 
@@ -370,32 +352,18 @@ footer{
         <div class="action-grid">
 
             <div class="action-card">
-
                 <h2>Reports Center</h2>
-
-                <p style="margin-bottom:25px;">
-                    Access enterprise reports, financial statements and
-                    operational summaries.
+                <p>
+                    Access enterprise reports, financial statements
+                    and operational summaries.
                 </p>
-
-                #
-                    View Reports
-                </a>
-
             </div>
 
             <div class="action-card">
-
                 <h2>Dashboard Center</h2>
-
-                <p style="margin-bottom:25px;">
-                    Explore interactive dashboards and data visualizations.
+                <p>
+                    Explore interactive dashboards and visual analytics.
                 </p>
-
-                #
-                    Open Dashboard
-                </a>
-
             </div>
 
         </div>
@@ -404,11 +372,19 @@ footer{
 
 </section>
 
-<!-- FOOTER -->
-
 <footer>
 
-    © 2026 ReportVault | Secure. Store. Analyze.
+    © 2026 ReportVault
+
+    <br><br>
+
+    Secure. Store. Analyze.
+
+    <br><br>
+
+    Created & Developed by
+
+    <strong>Darshan H K</strong>
 
 </footer>
 
