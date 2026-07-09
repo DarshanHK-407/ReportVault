@@ -1,101 +1,360 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>ReportVault</title>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>Modern Dark Dashboard</title>
 
-    <style>
-        body {
-            background: #020617;
-            color: white;
-            font-family: "Segoe UI", Arial, sans-serif;
-            text-align: center;
-            margin: 0;
-        }
+<style>
+:root {
+    /* Colors */
+    --bg-primary: #0F172A;
+    --bg-secondary: #1E293B;
+    --primary-blue: #3B82F6;
+    --accent-purple: #8B5CF6;
+    --highlight-pink: #EC4899;
+    --text-primary: #F8FAFC;
+    --text-muted: #94A3B8;
+    --border-color: #334155;
+}
 
-        .hero {
-            padding: 100px 20px;
-        }
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
 
-        .logo {
-            font-size: 60px;
-            font-weight: bold;
-        }
+body {
+    background: var(--bg-primary);
+    color: var(--text-primary);
+    font-family: "Segoe UI", sans-serif;
+    min-height: 100vh;
+}
 
-        .tagline {
-            color: #60a5fa;
-            font-size: 28px;
-            margin-top: 10px;
-        }
+/* Layout */
+.container {
+    display: flex;
+    min-height: 100vh;
+}
 
-        .card {
-            background: #0a0f1c;
-            width: 80%;
-            max-width: 900px;
-            margin: 20px auto;
-            padding: 25px;
-            border-radius: 12px;
-        }
+/* Sidebar */
+.sidebar {
+    width: 260px;
+    background: var(--bg-secondary);
+    border-right: 1px solid var(--border-color);
+    padding: 24px;
+}
 
-        h2 {
-            color: #60a5fa;
-        }
+.logo {
+    font-size: 24px;
+    font-weight: 700;
+    color: var(--primary-blue);
+    margin-bottom: 40px;
+}
 
-        button {
-            padding: 10px 20px;
-            background: #2563eb;
-            color: white;
-            border: none;
-            border-radius: 6px;
-            cursor: pointer;
-        }
+.nav-item {
+    padding: 14px 18px;
+    border-radius: 12px;
+    margin-bottom: 10px;
+    cursor: pointer;
+    color: var(--text-muted);
+    transition: 0.3s;
+}
 
-        footer {
-            background: #030712;
-            padding: 20px;
-            margin-top: 30px;
-        }
-    </style>
+.nav-item:hover,
+.nav-item.active {
+    background: rgba(59,130,246,0.15);
+    color: var(--text-primary);
+    border: 1px solid var(--primary-blue);
+}
+
+/* Main Content */
+.main {
+    flex: 1;
+    padding: 30px;
+}
+
+.header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 30px;
+}
+
+.title {
+    font-size: 32px;
+    font-weight: 700;
+}
+
+.subtitle {
+    color: var(--text-muted);
+    margin-top: 5px;
+}
+
+.profile {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.avatar {
+    width: 45px;
+    height: 45px;
+    border-radius: 50%;
+    background: linear-gradient(
+        135deg,
+        var(--primary-blue),
+        var(--accent-purple)
+    );
+}
+
+/* Cards */
+.card-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
+    gap: 20px;
+}
+
+.card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 18px;
+    padding: 24px;
+    transition: 0.3s;
+}
+
+.card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 10px 25px rgba(59,130,246,0.15);
+}
+
+.card-title {
+    color: var(--text-muted);
+    margin-bottom: 12px;
+}
+
+.card-value {
+    font-size: 32px;
+    font-weight: bold;
+}
+
+.blue {
+    color: var(--primary-blue);
+}
+
+.purple {
+    color: var(--accent-purple);
+}
+
+.pink {
+    color: var(--highlight-pink);
+}
+
+/* Analytics Section */
+.analytics {
+    margin-top: 30px;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    gap: 20px;
+}
+
+.chart-card,
+.activity-card {
+    background: var(--bg-secondary);
+    border: 1px solid var(--border-color);
+    border-radius: 18px;
+    padding: 24px;
+}
+
+.chart-box {
+    height: 300px;
+    display: flex;
+    align-items: flex-end;
+    gap: 15px;
+    margin-top: 20px;
+}
+
+.bar {
+    flex: 1;
+    border-radius: 10px 10px 0 0;
+    background: linear-gradient(
+        180deg,
+        var(--primary-blue),
+        var(--accent-purple)
+    );
+}
+
+.bar:nth-child(1){height:40%;}
+.bar:nth-child(2){height:65%;}
+.bar:nth-child(3){height:75%;}
+.bar:nth-child(4){height:55%;}
+.bar:nth-child(5){height:90%;}
+.bar:nth-child(6){height:70%;}
+
+/* Activity */
+.activity-item {
+    padding: 14px 0;
+    border-bottom: 1px solid var(--border-color);
+}
+
+.activity-item:last-child {
+    border-bottom: none;
+}
+
+.activity-title {
+    font-weight: 600;
+}
+
+.activity-time {
+    color: var(--text-muted);
+    font-size: 13px;
+    margin-top: 4px;
+}
+
+/* Buttons */
+.btn {
+    border: none;
+    padding: 12px 18px;
+    border-radius: 12px;
+    cursor: pointer;
+    color: white;
+    font-weight: 600;
+}
+
+.btn-primary {
+    background: var(--primary-blue);
+}
+
+.btn-secondary {
+    background: var(--accent-purple);
+}
+
+.btn-primary:hover,
+.btn-secondary:hover {
+    opacity: .9;
+}
+</style>
 </head>
+
 <body>
 
-<div class="hero">
-    <div class="logo">ReportVault</div>
-    <div class="tagline">Secure. Store. Analyze.</div>
-</div>
+<div class="container">
 
-<div class="card">
-    <h2>About ReportVault</h2>
-    <p>
-        ReportVault is a secure platform for managing reports,
-        dashboards and business analytics.
-    </p>
-</div>
+    <!-- Sidebar -->
+    <aside class="sidebar">
+        <div class="logo">⚡ FinancePro</div>
 
-<div class="card">
-    <h2>Services</h2>
-    <ul style="text-align:left;display:inline-block;">
-        <li>Financial Reporting</li>
-        <li>Business Analytics</li>
-        <li>KPI Dashboards</li>
-        <li>Document Management</li>
-    </ul>
-</div>
+        <div class="nav-item active">Dashboard</div>
+        <div class="nav-item">Analytics</div>
+        <div class="nav-item">Reports</div>
+        <div class="nav-item">Invoices</div>
+        <div class="nav-item">Settings</div>
+    </aside>
 
-<div class="card">
-    <h2>Reports Center</h2>
-    <button>View Reports</button>
-</div>
+    <!-- Main -->
+    <main class="main">
 
-<div class="card">
-    <h2>Dashboard Center</h2>
-    <button>Open Dashboard</button>
-</div>
+        <div class="header">
+            <div>
+                <div class="title">Finance Dashboard</div>
+                <div class="subtitle">
+                    Welcome back, Darshan 👋
+                </div>
+            </div>
 
-<footer>
-    © 2026 ReportVault | Secure. Store. Analyze.
-</footer>
+            <div class="profile">
+                <button class="btn btn-primary">Export</button>
+                <div class="avatar"></div>
+            </div>
+        </div>
+
+        <!-- KPI Cards -->
+        <div class="card-grid">
+
+            <div class="card">
+                <div class="card-title">Revenue</div>
+                <div class="card-value blue">₹12.4M</div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Profit</div>
+                <div class="card-value purple">₹3.1M</div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Orders</div>
+                <div class="card-value pink">2,584</div>
+            </div>
+
+            <div class="card">
+                <div class="card-title">Growth</div>
+                <div class="card-value blue">+18.5%</div>
+            </div>
+
+        </div>
+
+        <!-- Analytics -->
+        <div class="analytics">
+
+            <div class="chart-card">
+                <h3>Monthly Performance</h3>
+
+                <div class="chart-box">
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                    <div class="bar"></div>
+                </div>
+            </div>
+
+            <div class="activity-card">
+                <h3>Recent Activity</h3>
+
+                <div class="activity-item">
+                    <div class="activity-title">
+                        New Invoice Generated
+                    </div>
+                    <div class="activity-time">
+                        5 mins ago
+                    </div>
+                </div>
+
+                <div class="activity-item">
+                    <div class="activity-title">
+                        Revenue Updated
+                    </div>
+                    <div class="activity-time">
+                        25 mins ago
+                    </div>
+                </div>
+
+                <div class="activity-item">
+                    <div class="activity-title">
+                        Report Exported
+                    </div>
+                    <div class="activity-time">
+                        1 hour ago
+                    </div>
+                </div>
+
+                <div class="activity-item">
+                    <div class="activity-title">
+                        Payment Received
+                    </div>
+                    <div class="activity-time">
+                        3 hours ago
+                    </div>
+                </div>
+
+            </div>
+
+        </div>
+
+    </main>
+
+</div>
 
 </body>
 </html>
