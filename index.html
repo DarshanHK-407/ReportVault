@@ -1,360 +1,416 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8" />
-<meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Modern Dark Dashboard</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ReportVault</title>
 
 <style>
-:root {
-    /* Colors */
-    --bg-primary: #0F172A;
-    --bg-secondary: #1E293B;
-    --primary-blue: #3B82F6;
-    --accent-purple: #8B5CF6;
-    --highlight-pink: #EC4899;
-    --text-primary: #F8FAFC;
-    --text-muted: #94A3B8;
-    --border-color: #334155;
+
+:root{
+    --bg-primary:#0F172A;
+    --bg-secondary:#1E293B;
+
+    --primary-blue:#3B82F6;
+    --accent-purple:#8B5CF6;
+    --highlight-pink:#EC4899;
+
+    --text-primary:#F8FAFC;
+    --text-muted:#94A3B8;
+
+    --border:#334155;
 }
 
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
 }
 
-body {
-    background: var(--bg-primary);
-    color: var(--text-primary);
-    font-family: "Segoe UI", sans-serif;
-    min-height: 100vh;
+body{
+    font-family:'Segoe UI',sans-serif;
+    background:var(--bg-primary);
+    color:var(--text-primary);
+    line-height:1.6;
 }
 
-/* Layout */
-.container {
-    display: flex;
-    min-height: 100vh;
+/* HERO */
+
+.hero{
+    text-align:center;
+    padding:120px 20px;
+    background:linear-gradient(
+        135deg,
+        #0F172A 0%,
+        #111827 50%,
+        #1E293B 100%
+    );
 }
 
-/* Sidebar */
-.sidebar {
-    width: 260px;
-    background: var(--bg-secondary);
-    border-right: 1px solid var(--border-color);
-    padding: 24px;
+.hero h1{
+    font-size:5rem;
+    font-weight:800;
+    margin-bottom:10px;
 }
 
-.logo {
-    font-size: 24px;
-    font-weight: 700;
-    color: var(--primary-blue);
-    margin-bottom: 40px;
+.hero p{
+    font-size:1.8rem;
+    color:var(--primary-blue);
+    margin-bottom:40px;
 }
 
-.nav-item {
-    padding: 14px 18px;
-    border-radius: 12px;
-    margin-bottom: 10px;
-    cursor: pointer;
-    color: var(--text-muted);
-    transition: 0.3s;
+.hero-buttons{
+    display:flex;
+    justify-content:center;
+    gap:20px;
+    flex-wrap:wrap;
 }
 
-.nav-item:hover,
-.nav-item.active {
-    background: rgba(59,130,246,0.15);
-    color: var(--text-primary);
-    border: 1px solid var(--primary-blue);
+/* BUTTONS */
+
+.btn-primary,
+.btn-secondary{
+    text-decoration:none;
+    color:white;
+    padding:14px 30px;
+    border-radius:12px;
+    font-weight:600;
+    transition:.3s ease;
 }
 
-/* Main Content */
-.main {
-    flex: 1;
-    padding: 30px;
-}
-
-.header {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-bottom: 30px;
-}
-
-.title {
-    font-size: 32px;
-    font-weight: 700;
-}
-
-.subtitle {
-    color: var(--text-muted);
-    margin-top: 5px;
-}
-
-.profile {
-    display: flex;
-    align-items: center;
-    gap: 12px;
-}
-
-.avatar {
-    width: 45px;
-    height: 45px;
-    border-radius: 50%;
-    background: linear-gradient(
+.btn-primary{
+    background:linear-gradient(
         135deg,
         var(--primary-blue),
         var(--accent-purple)
     );
 }
 
-/* Cards */
-.card-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit,minmax(250px,1fr));
-    gap: 20px;
-}
-
-.card {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    border-radius: 18px;
-    padding: 24px;
-    transition: 0.3s;
-}
-
-.card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 25px rgba(59,130,246,0.15);
-}
-
-.card-title {
-    color: var(--text-muted);
-    margin-bottom: 12px;
-}
-
-.card-value {
-    font-size: 32px;
-    font-weight: bold;
-}
-
-.blue {
-    color: var(--primary-blue);
-}
-
-.purple {
-    color: var(--accent-purple);
-}
-
-.pink {
-    color: var(--highlight-pink);
-}
-
-/* Analytics Section */
-.analytics {
-    margin-top: 30px;
-    display: grid;
-    grid-template-columns: 2fr 1fr;
-    gap: 20px;
-}
-
-.chart-card,
-.activity-card {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    border-radius: 18px;
-    padding: 24px;
-}
-
-.chart-box {
-    height: 300px;
-    display: flex;
-    align-items: flex-end;
-    gap: 15px;
-    margin-top: 20px;
-}
-
-.bar {
-    flex: 1;
-    border-radius: 10px 10px 0 0;
-    background: linear-gradient(
-        180deg,
-        var(--primary-blue),
-        var(--accent-purple)
+.btn-secondary{
+    background:linear-gradient(
+        135deg,
+        var(--accent-purple),
+        var(--highlight-pink)
     );
 }
 
-.bar:nth-child(1){height:40%;}
-.bar:nth-child(2){height:65%;}
-.bar:nth-child(3){height:75%;}
-.bar:nth-child(4){height:55%;}
-.bar:nth-child(5){height:90%;}
-.bar:nth-child(6){height:70%;}
-
-/* Activity */
-.activity-item {
-    padding: 14px 0;
-    border-bottom: 1px solid var(--border-color);
-}
-
-.activity-item:last-child {
-    border-bottom: none;
-}
-
-.activity-title {
-    font-weight: 600;
-}
-
-.activity-time {
-    color: var(--text-muted);
-    font-size: 13px;
-    margin-top: 4px;
-}
-
-/* Buttons */
-.btn {
-    border: none;
-    padding: 12px 18px;
-    border-radius: 12px;
-    cursor: pointer;
-    color: white;
-    font-weight: 600;
-}
-
-.btn-primary {
-    background: var(--primary-blue);
-}
-
-.btn-secondary {
-    background: var(--accent-purple);
-}
-
 .btn-primary:hover,
-.btn-secondary:hover {
-    opacity: .9;
+.btn-secondary:hover{
+    transform:translateY(-3px);
 }
+
+/* SECTION */
+
+.section{
+    padding:70px 20px;
+}
+
+.container{
+    max-width:1200px;
+    margin:auto;
+}
+
+.section-title{
+    text-align:center;
+    font-size:2.3rem;
+    margin-bottom:35px;
+    color:var(--primary-blue);
+}
+
+/* CARD */
+
+.card{
+    background:var(--bg-secondary);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:40px;
+    transition:0.3s;
+}
+
+.card:hover{
+    transform:translateY(-4px);
+    box-shadow:0 10px 25px rgba(59,130,246,.15);
+}
+
+/* KPIs */
+
+.stats{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:25px;
+}
+
+.stat-card{
+    background:var(--bg-secondary);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:30px;
+    transition:.3s;
+}
+
+.stat-card:hover{
+    transform:translateY(-5px);
+    box-shadow:0 10px 30px rgba(59,130,246,.2);
+}
+
+.stat-card h3{
+    color:var(--text-muted);
+    margin-bottom:15px;
+}
+
+.stat-card span{
+    font-size:2.5rem;
+    font-weight:700;
+    color:var(--primary-blue);
+}
+
+/* SERVICES */
+
+.services{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(250px,1fr));
+    gap:25px;
+}
+
+.service-card{
+    background:var(--bg-secondary);
+    border:1px solid var(--border);
+    border-radius:18px;
+    padding:35px;
+    text-align:center;
+    transition:.3s;
+}
+
+.service-card:hover{
+    border-color:var(--accent-purple);
+    transform:translateY(-5px);
+    box-shadow:0 10px 25px rgba(139,92,246,.25);
+}
+
+.service-icon{
+    font-size:40px;
+    margin-bottom:15px;
+}
+
+.service-card h3{
+    margin-bottom:10px;
+}
+
+/* ACTIONS */
+
+.action-grid{
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(350px,1fr));
+    gap:25px;
+}
+
+.action-card{
+    background:var(--bg-secondary);
+    border:1px solid var(--border);
+    border-radius:20px;
+    padding:40px;
+    text-align:center;
+}
+
+.action-card h2{
+    margin-bottom:20px;
+    color:var(--primary-blue);
+}
+
+/* FOOTER */
+
+footer{
+    text-align:center;
+    padding:35px;
+    background:#09101d;
+    border-top:1px solid var(--border);
+    color:var(--text-muted);
+}
+
+/* RESPONSIVE */
+
+@media(max-width:768px){
+
+.hero h1{
+    font-size:3rem;
+}
+
+.hero p{
+    font-size:1.2rem;
+}
+
+.section-title{
+    font-size:1.8rem;
+}
+
+}
+
 </style>
 </head>
-
 <body>
 
-<div class="container">
+<!-- HERO -->
 
-    <!-- Sidebar -->
-    <aside class="sidebar">
-        <div class="logo">⚡ FinancePro</div>
+<section class="hero">
 
-        <div class="nav-item active">Dashboard</div>
-        <div class="nav-item">Analytics</div>
-        <div class="nav-item">Reports</div>
-        <div class="nav-item">Invoices</div>
-        <div class="nav-item">Settings</div>
-    </aside>
+    <h1>ReportVault</h1>
 
-    <!-- Main -->
-    <main class="main">
+    <p>Secure. Store. Analyze.</p>
 
-        <div class="header">
-            <div>
-                <div class="title">Finance Dashboard</div>
-                <div class="subtitle">
-                    Welcome back, Darshan 👋
-                </div>
+    <div class="hero-buttons">
+        #">View Reports</a>
+        # class="btn-secondary">Open Dashboard</a>
+    </div>
+
+</section>
+
+<!-- KPI SECTION -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="stats">
+
+            <div class="stat-card">
+                <h3>Total Reports</h3>
+                <span>320</span>
             </div>
 
-            <div class="profile">
-                <button class="btn btn-primary">Export</button>
-                <div class="avatar"></div>
-            </div>
-        </div>
-
-        <!-- KPI Cards -->
-        <div class="card-grid">
-
-            <div class="card">
-                <div class="card-title">Revenue</div>
-                <div class="card-value blue">₹12.4M</div>
+            <div class="stat-card">
+                <h3>Dashboards</h3>
+                <span>48</span>
             </div>
 
-            <div class="card">
-                <div class="card-title">Profit</div>
-                <div class="card-value purple">₹3.1M</div>
+            <div class="stat-card">
+                <h3>Users</h3>
+                <span>1,240</span>
             </div>
 
-            <div class="card">
-                <div class="card-title">Orders</div>
-                <div class="card-value pink">2,584</div>
-            </div>
-
-            <div class="card">
-                <div class="card-title">Growth</div>
-                <div class="card-value blue">+18.5%</div>
+            <div class="stat-card">
+                <h3>Storage Used</h3>
+                <span>8.5TB</span>
             </div>
 
         </div>
 
-        <!-- Analytics -->
-        <div class="analytics">
+    </div>
 
-            <div class="chart-card">
-                <h3>Monthly Performance</h3>
+</section>
 
-                <div class="chart-box">
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                    <div class="bar"></div>
-                </div>
+<!-- ABOUT -->
+
+<section class="section">
+
+    <div class="container">
+
+        <h2 class="section-title">
+            About ReportVault
+        </h2>
+
+        <div class="card">
+            <p style="font-size:1.15rem;text-align:center;">
+                ReportVault is a secure platform for managing reports,
+                dashboards and business analytics. Store valuable business
+                information, access interactive dashboards, generate insights,
+                and collaborate efficiently through a centralized reporting hub.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+<!-- SERVICES -->
+
+<section class="section">
+
+    <div class="container">
+
+        <h2 class="section-title">Services</h2>
+
+        <div class="services">
+
+            <div class="service-card">
+                <div class="service-icon">📊</div>
+                <h3>Financial Reporting</h3>
+                <p>Create and manage financial reports efficiently.</p>
             </div>
 
-            <div class="activity-card">
-                <h3>Recent Activity</h3>
+            <div class="service-card">
+                <div class="service-icon">📈</div>
+                <h3>Business Analytics</h3>
+                <p>Transform business data into actionable insights.</p>
+            </div>
 
-                <div class="activity-item">
-                    <div class="activity-title">
-                        New Invoice Generated
-                    </div>
-                    <div class="activity-time">
-                        5 mins ago
-                    </div>
-                </div>
+            <div class="service-card">
+                <div class="service-icon">🎯</div>
+                <h3>KPI Dashboards</h3>
+                <p>Monitor critical performance metrics in real time.</p>
+            </div>
 
-                <div class="activity-item">
-                    <div class="activity-title">
-                        Revenue Updated
-                    </div>
-                    <div class="activity-time">
-                        25 mins ago
-                    </div>
-                </div>
+            <div class="service-card">
+                <div class="service-icon">📁</div>
+                <h3>Document Management</h3>
+                <p>Securely organize and manage business documents.</p>
+            </div>
 
-                <div class="activity-item">
-                    <div class="activity-title">
-                        Report Exported
-                    </div>
-                    <div class="activity-time">
-                        1 hour ago
-                    </div>
-                </div>
+        </div>
 
-                <div class="activity-item">
-                    <div class="activity-title">
-                        Payment Received
-                    </div>
-                    <div class="activity-time">
-                        3 hours ago
-                    </div>
-                </div>
+    </div>
+
+</section>
+
+<!-- REPORTS & DASHBOARD -->
+
+<section class="section">
+
+    <div class="container">
+
+        <div class="action-grid">
+
+            <div class="action-card">
+
+                <h2>Reports Center</h2>
+
+                <p style="margin-bottom:25px;">
+                    Access enterprise reports, financial statements and
+                    operational summaries.
+                </p>
+
+                #
+                    View Reports
+                </a>
+
+            </div>
+
+            <div class="action-card">
+
+                <h2>Dashboard Center</h2>
+
+                <p style="margin-bottom:25px;">
+                    Explore interactive dashboards and data visualizations.
+                </p>
+
+                #
+                    Open Dashboard
+                </a>
 
             </div>
 
         </div>
 
-    </main>
+    </div>
 
-</div>
+</section>
+
+<!-- FOOTER -->
+
+<footer>
+
+    © 2026 ReportVault | Secure. Store. Analyze.
+
+</footer>
 
 </body>
 </html>
