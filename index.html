@@ -1,385 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ReportVault - Secure. Store. Analyze.</title>
-
-<style>
-/* 
-   ReportVault Stylesheet
-   Theme: Light with Money Background Logo
-   Developer: Darshan H K (as per footer)
-*/
-
-/* --- CSS Variables for Easy Theming --- */
-:root {
-    --bg-primary: #F8F5EC; /* Light, off-white background */
-    --bg-secondary: #FFFFFF; /* White for cards and sections */
-
-    --logo-text-color: #2C3E50; /* Dark blue/charcoal for main logo text and headings */
-    --tagline-text-color: #5D7D6B; /* Muted green for tagline and accents */
-    --general-text-color: #34495E; /* Slightly lighter dark for general body text */
-
-    --text-muted: #7F8C8D; /* Muted gray for secondary text/labels */
-
-    --border-color: #E0E0E0; /* Lighter border for cards and dividers */
-    --footer-bg: #EFEAE1; /* Slightly darker cream for footer */
-}
-
-/* --- Base Styles --- */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', sans-serif; /* Clean, modern sans-serif font */
-}
-
-body {
-    background: var(--bg-primary);
-    color: var(--general-text-color);
-    line-height: 1.6;
-}
-
-/* --- Hero Section (Logo Area) --- */
-.hero {
-    text-align: center;
-    padding: 120px 20px;
-    background: var(--bg-primary);
-}
-
-.logo-box {
-    position: relative;
-    max-width: 1000px;
-    margin: auto;
-    padding: 60px 0; /* Vertical padding for the logo area */
-}
-
-/* --- Money Background Image for Logo --- */
-.money-bg {
-    position: absolute;
-    left: 50%;
-    top: 50%;
-    transform: translate(-50%, -50%);
-    width: 100%; /* Take full width of parent logo-box */
-    height: 100%; /* Take full height of parent logo-box */
-    max-width: 600px; /* Limit the max width of the background image */
-    max-height: 300px; /* Limit the max height of the background image */
-    
-    /* !! IMPORTANT: Replace this URL with your actual money image URL !! */
-    /* I've used a generic money image URL here for demonstration. */
-    background-image: url('https://i.imgur.com/gK9qN2r.png'); 
-    
-    background-size: contain; /* Ensures the entire image fits */
-    background-repeat: no-repeat;
-    background-position: center;
-    opacity: 0.3; /* Adjust opacity for desired subtlety */
-    z-index: 1; /* Place behind text */
-    pointer-events: none; /* Allows clicks to pass through to elements beneath */
-    user-select: none; /* Prevent text selection on the image */
-}
-
-/* --- Main Logo Text --- */
-.logo-title {
-    position: relative;
-    z-index: 2; /* Place above money background */
-    font-size: 6.5rem;
-    font-weight: 900;
-    color: var(--logo-text-color); /* Solid dark color */
-    /* Removed gradient and text-shadow from previous design */
-}
-
-/* --- Logo Tagline --- */
-.logo-tagline {
-    position: relative;
-    z-index: 2; /* Place above money background */
-    font-size: 2rem;
-    margin-top: 15px;
-    color: var(--tagline-text-color); /* Muted green color */
-}
-
-/* --- General Section Styling --- */
-.section {
-    padding: 80px 20px;
-}
-
-.container {
-    max-width: 1200px;
-    margin: auto;
-}
-
-.section-title {
-    text-align: center;
-    font-size: 2.3rem;
-    margin-bottom: 35px;
-    color: var(--logo-text-color); /* Use dark logo text color for headings */
-}
-
-/* --- Card Base Style --- */
-.card {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    border-radius: 20px;
-    padding: 35px;
-    transition: 0.3s ease-in-out;
-}
-
-.card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08); /* Subtle shadow on hover */
-}
-
-/* --- KPI Section --- */
-.stats {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 25px;
-}
-
-.stat-card {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    border-radius: 18px;
-    padding: 30px;
-    text-align: center;
-    transition: 0.3s ease-in-out;
-}
-
-.stat-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 12px 25px rgba(0, 0, 0, 0.06); /* Subtle shadow on hover */
-}
-
-.stat-card h3 {
-    color: var(--text-muted); /* Muted gray for labels */
-}
-
-.stat-card span {
-    display: block;
-    margin-top: 12px;
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: var(--logo-text-color); /* Dark color for numbers */
-}
-
-/* --- Services Section --- */
-.services {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-    gap: 25px;
-}
-
-.service-card {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    border-radius: 18px;
-    text-align: center;
-    padding: 35px;
-    transition: 0.3s ease-in-out;
-}
-
-.service-card:hover {
-    transform: translateY(-5px);
-    border-color: var(--tagline-text-color); /* Border highlight on hover */
-    box-shadow: 0 15px 25px rgba(0, 0, 0, 0.10); /* Subtle shadow on hover */
-}
-
-.service-icon {
-    font-size: 40px;
-    margin-bottom: 15px;
-    color: var(--tagline-text-color); /* Muted green for icons */
-}
-
-.service-card h3 {
-    margin-bottom: 10px;
-    color: var(--logo-text-color); /* Dark color for service titles */
-}
-
-/* --- Action Cards Section --- */
-.action-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    gap: 25px;
-}
-
-.action-card {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    border-radius: 20px;
-    padding: 40px;
-    text-align: center;
-    transition: 0.3s ease-in-out;
-}
-
-.action-card:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 15px 30px rgba(0, 0, 0, 0.08); /* Subtle shadow on hover */
-}
-
-.action-card h3 {
-    margin-bottom: 15px;
-    color: var(--logo-text-color); /* Dark color for action card titles */
-}
-
-/* --- Footer --- */
-footer {
-    background: var(--footer-bg);
-    border-top: 1px solid var(--border-color);
-    text-align: center;
-    padding: 40px;
-    color: var(--text-muted);
-}
-
-footer strong {
-    color: var(--logo-text-color);
-}
-
-/* --- Responsive Design (Mobile Adjustments) --- */
-@media (max-width: 768px) {
-    .logo-title {
-        font-size: 3.8rem; /* Smaller font for mobile logo */
+  <meta charset="UTF-8">
+  <title>ReportVault Dashboard</title>
+  <style>
+    body {
+      background: #f8f7f3;
+      font-family: 'Lato', Arial, sans-serif;
+      margin: 0;
+      padding: 0;
     }
-
-    .logo-tagline {
-        font-size: 1.2rem; /* Smaller font for mobile tagline */
+    .header {
+      text-align: center;
+      padding: 40px 0 20px 0;
+      background: none;
     }
-
-    .money-bg {
-        max-width: 300px; /* Smaller money image for mobile */
-        max-height: 150px;
+    .logo-text {
+      font-size: 52px;
+      font-weight: bold;
+      color: #2d3c48;
+      margin-bottom: 10px;
+      letter-spacing: 1px;
     }
-
-    .section-title {
-        font-size: 1.8rem; /* Smaller font for mobile section titles */
+    .tagline {
+      font-size: 22px;
+      color: #658572;
+      margin-bottom: 35px;
+      font-weight: 400;
     }
-
-    .stats, .services, .action-grid {
-        grid-template-columns: 1fr; /* Stack columns on mobile */
+    .stats-container {
+      display: flex;
+      justify-content: center;
+      gap: 24px;
+      margin: 0 auto 40px auto;
+      max-width: 1100px;
     }
-}
-</style>
+    .stat-card {
+      background: #fff;
+      border-radius: 18px;
+      box-shadow: 0 3px 14px rgba(44, 62, 80, 0.08);
+      padding: 32px 30px;
+      text-align: center;
+      flex: 1 1 210px;
+      min-width: 180px;
+      transition: box-shadow 0.3s;
+    }
+    .stat-card:hover {
+      box-shadow: 0 4px 18px rgba(44, 62, 80, 0.18);
+    }
+    .stat-title {
+      font-size: 17px;
+      color: #65787a;
+      margin-bottom: 12px;
+      font-weight: 500;
+    }
+    .stat-value {
+      font-size: 34px;
+      color: #2d3c48;
+      font-weight: bold;
+      margin-bottom: 4px;
+    }
+    @media (max-width: 800px) {
+      .stats-container {
+        flex-direction: column;
+        align-items: center;
+      }
+      .stat-card {
+        margin-bottom: 18px;
+      }
+    }
+  </style>
 </head>
-
 <body>
-
-<!-- --- HERO SECTION: Logo and Tagline --- -->
-<section class="hero">
-    <div class="logo-box">
-        <!-- The money-bg div now uses a background-image -->
-        <div class="money-bg"></div> 
-        <h1 class="logo-title">
-            ReportVault
-        </h1>
-        <p class="logo-tagline">
-            Secure. Store. Analyze.
-        </p>
+  <div class="header">
+    <div class="logo-text">ReportVault</div>
+    <div class="tagline">Secure. Store. Analyze.</div>
+  </div>
+  <div class="stats-container">
+    <div class="stat-card">
+      <div class="stat-title">Total Reports</div>
+      <div class="stat-value">320</div>
     </div>
-</section>
-
-<!-- --- KPI SECTION: Key Performance Indicators --- -->
-<section class="section">
-    <div class="container">
-        <div class="stats">
-            <div class="stat-card">
-                <h3>Total Reports</h3>
-                <span>320</span>
-            </div>
-            <div class="stat-card">
-                <h3>Dashboards</h3>
-                <span>48</span>
-            </div>
-            <div class="stat-card">
-                <h3>Users</h3>
-                <span>1,240</span>
-            </div>
-            <div class="stat-card">
-                <h3>Storage Used</h3>
-                <span>8.5 TB</span>
-            </div>
-        </div>
+    <div class="stat-card">
+      <div class="stat-title">Dashboards</div>
+      <div class="stat-value">48</div>
     </div>
-</section>
-
-<!-- --- ABOUT SECTION: Company Description --- -->
-<section class="section">
-    <div class="container">
-        <h2 class="section-title">
-            About ReportVault
-        </h2>
-        <div class="card">
-            <p style="text-align:center;font-size:1.1rem;">
-                ReportVault is a centralized reporting and analytics platform
-                designed to securely manage reports, dashboards and business
-                information. Access insights faster, organize documents
-                efficiently and support better decision-making from a single
-                trusted location.
-            </p>
-        </div>
+    <div class="stat-card">
+      <div class="stat-title">Users</div>
+      <div class="stat-value">1,240</div>
     </div>
-</section>
-
-<!-- --- SERVICES SECTION: Offerings --- -->
-<section class="section">
-    <div class="container">
-        <h2 class="section-title">
-            Services
-        </h2>
-        <div class="services">
-            <div class="service-card">
-                <div class="service-icon">📊</div>
-                <h3>Financial Reporting</h3>
-                <p>Create and manage reports efficiently.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">📈</div>
-                <h3>Business Analytics</h3>
-                <p>Transform business data into meaningful insights.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">🎯</div>
-                <h3>KPI Dashboards</h3>
-                <p>Monitor performance in real time.</p>
-            </div>
-            <div class="service-card">
-                <div class="service-icon">📁</div>
-                <h3>Document Management</h3>
-                <p>Organize and secure critical files.</p>
-            </div>
-        </div>
+    <div class="stat-card">
+      <div class="stat-title">Storage Used</div>
+      <div class="stat-value">8.5 TB</div>
     </div>
-</section>
-
-<!-- --- REPORTS & DASHBOARD SECTION: Actionable Links --- -->
-<section class="section">
-    <div class="container">
-        <div class="action-grid">
-            <div class="action-card">
-                <h3>Reports Center</h3>
-                <p>
-                    Access financial reports, operational summaries,
-                    monthly reviews and business documentation.
-                </p>
-            </div>
-            <div class="action-card">
-                <h3>Dashboard Center</h3>
-                <p>
-                    Explore KPIs, business metrics and interactive analytics
-                    dashboards from one unified portal.
-                </p>
-            </div>
-        </div>
-    </div>
-</section>
-
-<!-- --- FOOTER --- -->
-<footer>
-    © 2026 ReportVault
-    <br><br>
-    Secure. Store. Analyze.
-    <br><br>
-    Created & Developed by
-    <strong>Darshan H K</strong>
-</footer>
-
+  </div>
 </body>
 </html>
