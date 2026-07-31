@@ -4,8 +4,9 @@
   <meta charset="UTF-8">
   <title>ReportVault</title>
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- Google Fonts: Inter & Space Grotesk (optional) -->
+  <!-- Google Fonts: Inter & Space Grotesk -->
   <link href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&display=swap" rel="stylesheet">
   <style>
     :root {
       --brand-gradient: linear-gradient(90deg, #5061ee 0%, #9c67fd 100%);
@@ -38,11 +39,29 @@
       z-index: 10;
     }
     .navbar-logo {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-family: 'Space Grotesk', Arial, sans-serif;
       font-weight: 700;
       font-size: 1.45rem;
       letter-spacing: 1px;
       color: #24327a;
+    }
+    .logo-icon {
+      width: 32px;
+      height: 32px;
+      display: inline-block;
+      vertical-align: middle;
+    }
+    .logo-name {
       font-family: 'Space Grotesk', Arial, sans-serif;
+      font-size: 1.32rem;
+    }
+    .logo-accent {
+      color: var(--accent-cyan);
+      letter-spacing: 0.07em;
+      font-weight: 700;
     }
     .nav-links {
       display: flex;
@@ -73,7 +92,6 @@
     .login-btn:hover {
       background: linear-gradient(90deg, #6D7BE7 40%, #AB7AEA 100%);
     }
-
     .hero-container {
       max-width: 1100px;
       margin: 0 auto;
@@ -122,7 +140,6 @@
       border-color: var(--accent-purple);
       color: var(--accent-purple);
     }
-
     /* KPI Cards */
     .kpi-section {
       max-width: 1050px;
@@ -154,7 +171,7 @@
     .kpi-card:nth-child(2) { border-top-color: var(--kpi-border2); }
     .kpi-card:nth-child(3) { border-top-color: var(--kpi-border3); }
     .kpi-card:hover {
-      box-shadow: 0 6px 20px rgba(112, 116, 238, 0.18);
+      box-shadow: 0 6px 20px rgba(112,116,238, 0.18);
       transform: translateY(-2px) scale(1.03);
     }
     .kpi-icon {
@@ -173,7 +190,6 @@
       font-weight: bold;
       color: var(--accent-blue);
     }
-
     /* Features Cards */
     .features-section {
       max-width: 1080px;
@@ -221,8 +237,6 @@
       opacity: 0.85;
       margin-bottom: 0.06rem;
     }
-
-    /* Section Separator */
     .separator {
       width: 94%;
       height: 2px;
@@ -231,7 +245,6 @@
       border: none;
       opacity: 0.16;
     }
-
     .about-section {
       max-width: 1080px;
       margin: 0 auto;
@@ -267,7 +280,6 @@
       font-size: 1.1rem;
       color: var(--accent-green);
     }
-
     /* Responsive Design */
     @media (max-width: 900px) {
       .hero-container,
@@ -294,12 +306,75 @@
       .navbar {padding: 10px 7px;}
       .nav-links {font-size: .99rem;}
     }
+    /* Footer */
+    .footer-section {
+      background: #fff;
+      padding: 2.3rem 0 0.7rem 0;
+      border-top: 2px solid #5061ee22;
+      margin-top: 2.3rem;
+      font-size: 1rem;
+      color: #24327a;
+    }
+    .footer-container {
+      max-width: 1080px;
+      margin: 0 auto;
+      padding: 0 1rem;
+      display: flex;
+      flex-direction: column;
+      gap: 0.85rem;
+    }
+    .footer-top {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      font-size: 1.15rem;
+      font-family: 'Space Grotesk', Arial, sans-serif;
+      font-weight: 700;
+      color: #24327a;
+    }
+    .footer-info {
+      font-size: 1rem;
+      color: #353677;
+      margin-bottom: 8px;
+      margin-top: 3px;
+      font-family: 'Inter', Arial, sans-serif;
+    }
+    .footer-bottom {
+      color: #8181b7;
+      font-size: 0.97rem;
+      margin-top: 18px;
+      text-align: center;
+      opacity: 0.75;
+    }
+    .footer-logo-icon {
+      width: 28px;
+      height: 28px;
+      vertical-align: middle;
+    }
+    /* Footer responsive */
+    @media (max-width: 700px) {
+      .footer-top {
+        flex-direction: column;
+        gap: 5px;
+      }
+    }
   </style>
 </head>
 <body>
   <!-- Navigation Bar -->
   <nav class="navbar">
-    <div class="navbar-logo">ReportVault</div>
+    <div class="navbar-logo">
+      <span class="logo-icon">
+        <!-- Unique hexagon logo SVG -->
+        <svg width="32" height="32" viewBox="0 0 32 32" fill="none">
+          <polygon points="16,4 28,12 28,24 16,28 4,24 4,12"
+            stroke="#00F3FF" stroke-width="2" fill="none"/>
+          <polygon points="16,7 25,13 25,23 16,26 7,23 7,13"
+            fill="#00F3FF" opacity="0.16"/>
+        </svg>
+      </span>
+      <span class="logo-name">Report<span class="logo-accent">Vault</span></span>
+    </div>
     <div class="nav-links">
       <a href="#">Home</a>
       <a href="#">Features</a>
@@ -315,9 +390,7 @@
     <div class="hero-title">
       Move your business forward with insight-driven decisions and robust document management.
     </div>
-    <div class="hero-desc">
-      <!-- Remove if not needed -->
-    </div>
+    <div class="hero-desc"></div>
     <div class="cta-buttons">
       <button class="cta">Get Started</button>
       <button class="cta secondary">Explore Reports</button>
@@ -388,5 +461,29 @@
     </div>
   </section>
 
+  <!-- Footer Section with Your Details -->
+  <footer class="footer-section">
+    <div class="footer-container">
+      <div class="footer-top">
+        <span class="footer-logo-icon">
+          <svg width="28" height="28" viewBox="0 0 32 32" fill="none">
+            <polygon points="16,4 28,12 28,24 16,28 4,24 4,12"
+              stroke="#00F3FF" stroke-width="2" fill="none"/>
+            <polygon points="16,7 25,13 25,23 16,26 7,23 7,13"
+              fill="#00F3FF" opacity="0.16"/>
+          </svg>
+        </span>
+        <span>Report<span class="logo-accent">Vault</span></span>
+      </div>
+      <div class="footer-info">
+        Created by Darshan H K<br>
+        Email: <a href="mailto:darshanhkofficial@gmail.com" style="color:#5061ee;text-decoration:underline;">darshanhkofficial@gmail.com</a><br>
+        Phone: <a href="tel:+919873020320" style="color:#5061ee;text-decoration:underline;">+91-98730-20320</a>
+      </div>
+      <div class="footer-bottom">
+        &copy; 2026 ReportVault. All rights reserved.
+      </div>
+    </div>
+  </footer>
 </body>
 </html>
