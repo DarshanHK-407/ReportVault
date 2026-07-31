@@ -1,295 +1,377 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>ReportVault | Darshan H K</title>
-<style>
-:root {
-    --bg-primary: #F8F5EC;
-    --bg-secondary: #FFFFFF;
-    --primary-blue: #3B82F6;
-    --accent-purple: #8B5CF6;
-    --logo-text-color: #2C3E50;
-    --tagline-text-color: #5D7D6B;
-    --general-text-color: #34495E;
-    --text-muted: #7F8C8D;
-    --border-color: #E0E0E0;
-    --footer-bg: #EFEAE1;
-}
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-    font-family: 'Segoe UI', Arial, sans-serif;
-}
-body {
-    background: var(--bg-primary);
-    color: var(--general-text-color);
-    line-height: 1.6;
-}
-.hero {
-    text-align: center;
-    padding: 90px 20px 60px 20px;
-    background: var(--bg-primary);
-}
-.logo-box {
-    max-width: 720px;
-    margin: auto;
-    padding: 60px 0 40px 0;
-}
-.logo-title {
-    font-size: 4rem;
-    font-weight: 900;
-    color: var(--logo-text-color);
-    margin-bottom: 0.5rem;
-    letter-spacing: 2px;
-    line-height: 1.1;
-}
-.logo-tagline {
-    font-size: 1.35rem;
-    margin-top: 10px;
-    color: var(--tagline-text-color);
-    margin-bottom: 1.8rem;
-    font-weight: 500;
-}
-.creator {
-    margin-top: 18px;
-    color: var(--text-muted);
-    font-size: 1rem;
-}
-.section {
-    padding: 60px 20px;
-}
-.container {
-    max-width: 1200px;
-    margin: auto;
-}
-.stats {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-    gap: 24px;
-}
-.stat-card {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    border-radius: 18px;
-    text-align: center;
-    padding: 32px 20px;
-    transition: 0.3s;
-    box-shadow: 0 3px 16px rgba(44,62,80,0.10);
-}
-.stat-card:hover {
-    box-shadow: 0 8px 26px rgba(44,62,80,0.17);
-}
-.stat-card h3 {
-    color: var(--text-muted);
-    margin-bottom: 12px;
-    font-weight: 600;
-    font-size: 1.15rem;
-}
-.stat-card span {
-    display: block;
-    margin-top: 2px;
-    font-size: 2.2rem;
-    font-weight: bold;
-    color: var(--logo-text-color);
-}
-.section-title {
-    text-align: center;
-    font-size: 2rem;
-    margin-bottom: 30px;
-    color: var(--logo-text-color);
-    letter-spacing: 1px;
-}
-.card {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    border-radius: 20px;
-    padding: 35px;
-    transition: .3s;
-    box-shadow: 0 2px 10px rgba(44,62,80,0.06);
-    margin-bottom: 30px;
-}
-.services {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
-    gap: 22px;
-}
-.service-card {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    border-radius: 18px;
-    text-align: center;
-    padding: 32px 16px;
-    transition: 0.3s;
-    box-shadow: 0 2px 8px rgba(44,62,80,0.07);
-}
-.service-card:hover {
-    border-color: var(--accent-purple);
-    box-shadow: 0 12px 26px rgba(139,92,246,0.06);
-}
-.service-icon {
-    font-size: 40px;
-    margin-bottom: 16px;
-    color: var(--tagline-text-color);
-}
-.service-card h3 {
-    margin-bottom: 12px;
-    color: var(--logo-text-color);
-}
-.action-grid {
-    display: grid;
-    grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
-    gap: 24px;
-}
-.action-card {
-    background: var(--bg-secondary);
-    border: 1px solid var(--border-color);
-    border-radius: 20px;
-    padding: 34px 20px;
-    text-align: center;
-    transition: 0.3s;
-    box-shadow: 0 2px 12px rgba(44,62,80,0.08);
-}
-.action-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 10px 22px rgba(44,62,80,0.12);
-}
-.action-card h2, .action-card h3 {
-    color: var(--logo-text-color);
-    margin-bottom: 14px;
-}
-.action-card p {
-    color: var(--text-muted);
-    font-size: 1.05rem;
-}
-footer {
-    background: var(--footer-bg);
-    border-top: 1px solid var(--border-color);
-    text-align: center;
-    padding: 36px 14px;
-    color: var(--text-muted);
-    font-size: 1.04rem;
-    margin-top: 40px;
-}
-footer strong {
-    color: var(--logo-text-color);
-}
-@media (max-width: 768px) {
-    .logo-title { font-size: 2.2rem; }
-    .logo-tagline { font-size: 1.05rem; }
-    .section { padding: 32px 7px; }
-    .container { padding: 0 4px; }
-}
-</style>
+  <meta charset="UTF-8">
+  <title>ReportVault | Responsive Dashboard Preview</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+  <style>
+    /* ==================== CSS CUSTOM PROPERTIES ==================== */
+    :root {
+      --color-bg-light: #f8f5ec;
+      --color-bg-white: #ffffff;
+      --color-text-dark: #222f3e;
+      --color-primary: #3B82F6;
+      --color-secondary: #658572;
+      --color-border: #e0e0e0;
+      --color-shadow: rgba(44,62,80,0.07);
+      --color-shadow-hover: rgba(44,62,80,0.18);
+      --navbar-height: 4rem;
+    }
+
+    /* ==================== RESET & GLOBAL ==================== */
+    html {
+      box-sizing: border-box;
+    }
+    *, *::before, *::after {
+      box-sizing: inherit;
+    }
+    body {
+      margin: 0;
+      padding-top: var(--navbar-height);
+      background: var(--color-bg-light);
+      color: var(--color-text-dark);
+      font-family: 'Segoe UI', Arial, sans-serif;
+      min-height: 100vh;
+    }
+
+    /* ==================== NAVBAR ==================== */
+    .navbar {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: var(--navbar-height);
+      background: var(--color-bg-white);
+      box-shadow: 0 2px 16px var(--color-shadow);
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      z-index: 100;
+      transition: background 0.2s;
+    }
+    .navbar-logo {
+      font-size: 1.8rem;
+      font-weight: 700;
+      color: var(--color-text-dark);
+      margin-left: 2rem;
+      letter-spacing: 2px;
+    }
+    .navbar-menu {
+      display: flex;
+      gap: 2rem;
+      margin-right: 2rem;
+    }
+    .navbar-menu a {
+      text-decoration: none;
+      color: var(--color-text-dark);
+      font-weight: 500;
+      font-size: 1rem;
+      padding: 0.5rem 0.7rem;
+      border-radius: 3px;
+      transition: background 0.2s;
+    }
+    .navbar-menu a:hover,
+    .navbar-menu a:focus {
+      background: var(--color-bg-light);
+      outline: none;
+    }
+    /* Hamburger */
+    .navbar-toggle {
+      display: none;
+      background: none;
+      border: none;
+      margin-right: 1.2rem;
+      font-size: 1.8rem;
+      color: var(--color-text-dark);
+      cursor: pointer;
+    }
+    /* Mobile Navigation */
+    @media (max-width: 768px) {
+      .navbar-menu {
+        display: none;
+        flex-direction: column;
+        position: absolute;
+        right: 0;
+        top: var(--navbar-height);
+        background: var(--color-bg-white);
+        width: 100%;
+        box-shadow: 0 2px 16px var(--color-shadow);
+        border-bottom-left-radius: 8px;
+        border-bottom-right-radius: 8px;
+      }
+      .navbar-menu.open {
+        display: flex;
+      }
+      .navbar-toggle {
+        display: block;
+      }
+      .navbar-logo {
+        margin-left: 1rem;
+      }
+      .navbar-menu a {
+        margin: 0.5rem 1.2rem;
+      }
+    }
+
+    /* ==================== LAYOUT SECTIONS ==================== */
+    .container {
+      width: 100%;
+      max-width: 1100px;
+      margin: 0 auto;
+      padding: 1.5rem;
+      box-sizing: border-box;
+    }
+
+    /* ==================== DASHBOARD PREVIEW ==================== */
+    .dashboard-preview {
+      width: 100%;
+      margin-bottom: 2.5rem;
+    }
+    .dashboard-img-wrapper {
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      width: 100%;
+    }
+    .dashboard-img {
+      width: 100%;
+      max-width: 800px;
+      aspect-ratio: 16/9;
+      border-radius: 18px;
+      box-shadow: 0 4px 24px var(--color-shadow);
+      object-fit: cover;
+      border: 1px solid var(--color-border);
+      background: var(--color-bg-white);
+      transition: box-shadow 0.2s;
+    }
+    /* Fallback for browsers without aspect-ratio */
+    @supports not (aspect-ratio: 16/9) {
+      .dashboard-img {
+        height: 420px;
+      }
+    }
+
+    /* ==================== CTA SECTION BUTTONS ==================== */
+    .cta-section {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 2rem 0 3rem 0;
+      gap: 1.2rem;
+    }
+    .cta-btn-group {
+      display: flex;
+      gap: 1.5rem;
+      width: 100%;
+      justify-content: center;
+      margin-top: 0.2rem;
+    }
+    .cta-btn {
+      font-size: 1.1rem;
+      padding: 0.75rem 2.4rem;
+      border-radius: 8px;
+      border: none;
+      cursor: pointer;
+      font-weight: 600;
+      transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s;
+      outline: none;
+    }
+    .cta-btn-primary {
+      background: var(--color-primary);
+      color: var(--color-bg-white);
+      box-shadow: 0 2px 12px var(--color-shadow);
+      border: 2px solid var(--color-primary);
+    }
+    .cta-btn-primary:hover,
+    .cta-btn-primary:focus {
+      background: #2563eb;
+      color: var(--color-bg-white);
+      box-shadow: 0 8px 22px var(--color-shadow-hover);
+    }
+    .cta-btn-secondary {
+      background: transparent;
+      color: var(--color-primary);
+      border: 2px solid var(--color-primary);
+      box-shadow: none;
+      transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
+    }
+    .cta-btn-secondary:hover,
+    .cta-btn-secondary:focus {
+      background: var(--color-primary);
+      color: var(--color-bg-white);
+      box-shadow: 0 8px 22px var(--color-shadow-hover);
+    }
+    @media (max-width: 768px) {
+      .cta-btn-group {
+        flex-direction: column;
+        gap: 1rem;
+        width: 100%;
+      }
+    }
+
+    /* ==================== CARD SYSTEM ==================== */
+    .cards-section {
+      margin-bottom: 2.5rem;
+    }
+    .card-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr 1fr;
+      gap: 2rem;
+    }
+    @media (max-width: 768px) {
+      .card-grid {
+        grid-template-columns: 1fr;
+        gap: 1.3rem;
+      }
+    }
+    .dashboard-card {
+      background: var(--color-bg-white);
+      padding: 2rem 1.2rem 1.5rem 1.2rem;
+      border-radius: 14px;
+      margin: 0;
+      box-shadow: 0 3px 16px var(--color-shadow);
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      transition: box-shadow 0.3s ease, transform 0.3s ease;
+      border: 1px solid var(--color-border);
+      cursor: pointer;
+      min-height: 220px;
+    }
+    .dashboard-card:hover,
+    .dashboard-card:focus {
+      box-shadow: 0 10px 38px var(--color-shadow-hover);
+      transform: translateY(-5px);
+      outline: none;
+    }
+    .dashboard-card-icon {
+      font-size: 2.3rem;
+      margin-bottom: 1.1rem;
+      color: var(--color-primary);
+      aria-hidden: true;
+    }
+    .dashboard-card-title {
+      font-size: 1.25rem;
+      font-weight: 600;
+      margin-bottom: 0.7rem;
+      color: var(--color-text-dark);
+      text-align: center;
+    }
+    .dashboard-card-desc {
+      font-size: 1rem;
+      color: var(--color-secondary);
+      text-align: center;
+      margin-bottom: 0;
+    }
+
+    /* ==================== ACCESSIBILITY HIGHLIGHTS ==================== */
+    .dashboard-img:focus {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+    .dashboard-card:focus {
+      outline: 2px solid var(--color-primary);
+      outline-offset: 2px;
+    }
+
+    /* ==================== UTILITIES ==================== */
+    .sr-only {
+      position: absolute;
+      left: -9999px;
+      width: 1px;
+      height: 1px;
+      overflow: hidden;
+    }
+  </style>
 </head>
 <body>
+  <!-- ==================== NAVBAR ==================== -->
+  <header class="navbar" role="banner" aria-label="Main Navigation">
+    <div class="navbar-logo" aria-label="ReportVault Logo">ReportVault</div>
+    <nav>
+      <button class="navbar-toggle" aria-label="Open navigation menu" aria-expanded="false" id="navbarToggle">
+        &#9776;
+      </button>
+      <ul class="navbar-menu" id="navbarMenu" role="menubar" aria-label="Site Menu">
+        <li><a href="#dashboard" role="menuitem" tabindex="0">Dashboard</a></li>
+        <li><a href="#features" role="menuitem" tabindex="0">Features</a></li>
+        <li><a href="#cta" role="menuitem" tabindex="0">Get Started</a></li>
+      </ul>
+    </nav>
+  </header>
 
-<!-- HERO SECTION (Clean, No Artifacts) -->
-<section class="hero">
-    <div class="logo-box">
-        <!-- Removed the background image/artifacts and any patterns. Only solid, clean background remains. -->
-        <h1 class="logo-title">ReportVault</h1>
-        <p class="logo-tagline">Secure. Store. Analyze.</p>
-    </div>
-    <div class="creator">Created & Developed by Darshan H K</div>
-</section>
+  <main>
+    <!-- ==================== DASHBOARD PREVIEW ==================== -->
+    <section class="dashboard-preview container" id="dashboard" aria-labelledby="dashboard-preview-title">
+      <h1 id="dashboard-preview-title" class="sr-only">Dashboard Preview</h1>
+      <div class="dashboard-img-wrapper">
+        <img 
+          src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80"
+          alt="Preview of ReportVault Dashboard with charts and metrics"
+          class="dashboard-img"
+          loading="lazy"
+          tabindex="0"
+          aria-describedby="dashboard-preview-desc"
+        />
+      </div>
+      <div id="dashboard-preview-desc" class="sr-only">This is a preview image showing the layout and data visualization of ReportVault's dashboard.</div>
+    </section>
 
-<!-- KPI SECTION -->
-<section class="section">
-<div class="container">
-    <div class="stats">
-        <div class="stat-card">
-            <h3>Total Reports</h3>
-            <span>320</span>
-        </div>
-        <div class="stat-card">
-            <h3>Dashboards</h3>
-            <span>48</span>
-        </div>
-        <div class="stat-card">
-            <h3>Users</h3>
-            <span>1,240</span>
-        </div>
-        <div class="stat-card">
-            <h3>Storage Used</h3>
-            <span>8.5 TB</span>
-        </div>
-    </div>
-</div>
-</section>
+    <!-- ==================== CTA SECTION ==================== -->
+    <section class="cta-section container" id="cta" aria-labelledby="cta-title">
+      <h2 id="cta-title" class="sr-only">Get Started Call to Action</h2>
+      <div class="cta-btn-group" role="group" aria-label="CTA Buttons">
+        <button class="cta-btn cta-btn-primary" type="button" aria-label="Start Free Trial">Start Free Trial</button>
+        <button class="cta-btn cta-btn-secondary" type="button" aria-label="Contact Sales">Contact Sales</button>
+      </div>
+    </section>
 
-<!-- ABOUT SECTION -->
-<section class="section">
-<div class="container">
-    <h2 class="section-title">About ReportVault</h2>
-    <div class="card">
-        <p style="text-align:center;font-size:1.12rem;">
-            ReportVault is a secure platform for managing reports, dashboards, and analytics.
-            Store valuable business information, access interactive dashboards, generate insights,
-            and collaborate efficiently through a centralized reporting hub. Access insights faster,
-            organize documents efficiently, and support better decision-making from a single trusted location.
-        </p>
-    </div>
-</div>
-</section>
+    <!-- ==================== CARD SYSTEM ==================== -->
+    <section class="cards-section container" id="features" aria-labelledby="features-title">
+      <h2 id="features-title" class="sr-only">Feature Cards</h2>
+      <div class="card-grid">
+        <article class="dashboard-card" tabindex="0" aria-labelledby="card-title-1">
+          <div class="dashboard-card-icon" aria-hidden="true">📊</div>
+          <div class="dashboard-card-title" id="card-title-1">Analytics</div>
+          <p class="dashboard-card-desc">Real-time data visualizations and actionable insights to power your business.</p>
+        </article>
+        <article class="dashboard-card" tabindex="0" aria-labelledby="card-title-2">
+          <div class="dashboard-card-icon" aria-hidden="true">📁</div>
+          <div class="dashboard-card-title" id="card-title-2">Document Management</div>
+          <p class="dashboard-card-desc">Organize, secure, and access important business documents from anywhere.</p>
+        </article>
+        <article class="dashboard-card" tabindex="0" aria-labelledby="card-title-3">
+          <div class="dashboard-card-icon" aria-hidden="true">🔒</div>
+          <div class="dashboard-card-title" id="card-title-3">Security</div>
+          <p class="dashboard-card-desc">Advanced protection—your data is encrypted and safe in the vault.</p>
+        </article>
+      </div>
+    </section>
+  </main>
 
-<!-- SERVICES SECTION -->
-<section class="section">
-<div class="container">
-    <h2 class="section-title">Services</h2>
-    <div class="services">
-        <div class="service-card">
-            <div class="service-icon">📊</div>
-            <h3>Financial Reporting</h3>
-            <p>Create and manage reports efficiently.</p>
-        </div>
-        <div class="service-card">
-            <div class="service-icon">📈</div>
-            <h3>Business Analytics</h3>
-            <p>Transform business data into meaningful insights.</p>
-        </div>
-        <div class="service-card">
-            <div class="service-icon">🎯</div>
-            <h3>KPI Dashboards</h3>
-            <p>Monitor performance in real time.</p>
-        </div>
-        <div class="service-card">
-            <div class="service-icon">📁</div>
-            <h3>Document Management</h3>
-            <p>Organize and secure critical files.</p>
-        </div>
-    </div>
-</div>
-</section>
+  <!-- ==================== ACCESSIBLE FOOTER ==================== -->
+  <footer style="background: var(--footer-bg); text-align: center; padding: 2rem 1rem; color: var(--color-secondary); font-size: 1rem; border-top: 1px solid var(--color-border);">
+    &copy; 2026 ReportVault &ndash; Secure. Store. Analyze.<br>
+    Created & Developed by <strong style="color: var(--color-text-dark);">Darshan H K</strong>
+  </footer>
 
-<!-- ACTION LINKS SECTION -->
-<section class="section">
-<div class="container">
-    <div class="action-grid">
-        <div class="action-card">
-            <h2>Reports Center</h2>
-            <p>
-                Access financial reports, operational summaries, monthly reviews, and business documentation.
-            </p>
-        </div>
-        <div class="action-card">
-            <h2>Dashboard Center</h2>
-            <p>
-                Explore KPIs, business metrics, and interactive analytics dashboards from one unified portal.
-            </p>
-        </div>
-    </div>
-</div>
-</section>
-
-<!-- FOOTER -->
-<footer>
-    © 2026 ReportVault<br><br>
-    Secure. Store. Analyze.<br><br>
-    Created & Developed by <strong>Darshan H K</strong>
-</footer>
-
+  <!-- ==================== NAVBAR MOBILE TOGGLE SCRIPT ==================== -->
+  <script>
+    // Basic mobile menu toggle
+    const toggleBtn = document.getElementById('navbarToggle');
+    const menu = document.getElementById('navbarMenu');
+    toggleBtn.addEventListener('click', function(){
+      const expanded = menu.classList.toggle('open');
+      toggleBtn.setAttribute('aria-expanded', expanded);
+    });
+    // Accessibility: close menu when focus moves elsewhere on mobile
+    document.addEventListener('click', function(e){
+      if(window.innerWidth <= 768 && !menu.contains(e.target) && !toggleBtn.contains(e.target)){
+        menu.classList.remove('open');
+        toggleBtn.setAttribute('aria-expanded', false);
+      }
+    });
+  </script>
 </body>
 </html>
