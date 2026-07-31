@@ -4,14 +4,12 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>ReportVault | Darshan H K</title>
-<!-- ReportVault - Secure. Store. Analyze. -->
 <style>
 :root {
     --bg-primary: #F8F5EC;
     --bg-secondary: #FFFFFF;
     --primary-blue: #3B82F6;
     --accent-purple: #8B5CF6;
-    --highlight-pink: #EC4899;
     --logo-text-color: #2C3E50;
     --tagline-text-color: #5D7D6B;
     --general-text-color: #34495E;
@@ -19,55 +17,28 @@
     --border-color: #E0E0E0;
     --footer-bg: #EFEAE1;
 }
-
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
     font-family: 'Segoe UI', Arial, sans-serif;
 }
-
-/* Body */
 body {
     background: var(--bg-primary);
     color: var(--general-text-color);
     line-height: 1.6;
 }
-
-/* HERO - Logo Section */
 .hero {
     text-align: center;
     padding: 90px 20px 60px 20px;
     background: var(--bg-primary);
-    position: relative;
 }
 .logo-box {
-    position: relative;
     max-width: 720px;
     margin: auto;
     padding: 60px 0 40px 0;
 }
-
-.money-bg {
-    position: absolute;
-    left: 50%;
-    top: 48%;
-    transform: translate(-50%, -50%);
-    width: 70%;
-    height: 180px;
-    max-width: 440px;
-    background-image: url('https://i.imgur.com/gK9qN2r.png'); /* Example "money" background, change URL as needed */
-    background-size: contain;
-    background-repeat: no-repeat;
-    background-position: center;
-    opacity: 0.15;
-    z-index: 1;
-    pointer-events: none;
-}
-
 .logo-title {
-    position: relative;
-    z-index: 2;
     font-size: 4rem;
     font-weight: 900;
     color: var(--logo-text-color);
@@ -75,24 +46,18 @@ body {
     letter-spacing: 2px;
     line-height: 1.1;
 }
-
 .logo-tagline {
-    position: relative;
-    z-index: 2;
     font-size: 1.35rem;
     margin-top: 10px;
     color: var(--tagline-text-color);
     margin-bottom: 1.8rem;
     font-weight: 500;
 }
-
 .creator {
     margin-top: 18px;
     color: var(--text-muted);
     font-size: 1rem;
 }
-
-/* STATS/KPI Cards */
 .section {
     padding: 60px 20px;
 }
@@ -130,8 +95,6 @@ body {
     font-weight: bold;
     color: var(--logo-text-color);
 }
-
-/* SECTIONS */
 .section-title {
     text-align: center;
     font-size: 2rem;
@@ -148,8 +111,6 @@ body {
     box-shadow: 0 2px 10px rgba(44,62,80,0.06);
     margin-bottom: 30px;
 }
-
-/* SERVICES */
 .services {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(210px, 1fr));
@@ -177,8 +138,6 @@ body {
     margin-bottom: 12px;
     color: var(--logo-text-color);
 }
-
-/* ACTIONS GRID */
 .action-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(310px, 1fr));
@@ -205,8 +164,6 @@ body {
     color: var(--text-muted);
     font-size: 1.05rem;
 }
-
-/* FOOTER */
 footer {
     background: var(--footer-bg);
     border-top: 1px solid var(--border-color);
@@ -219,8 +176,6 @@ footer {
 footer strong {
     color: var(--logo-text-color);
 }
-
-/* Responsive */
 @media (max-width: 768px) {
     .logo-title { font-size: 2.2rem; }
     .logo-tagline { font-size: 1.05rem; }
@@ -231,10 +186,10 @@ footer strong {
 </head>
 <body>
 
-<!-- HERO SECTION -->
+<!-- HERO SECTION (Clean, No Artifacts) -->
 <section class="hero">
     <div class="logo-box">
-        <div class="money-bg"></div>
+        <!-- Removed the background image/artifacts and any patterns. Only solid, clean background remains. -->
         <h1 class="logo-title">ReportVault</h1>
         <p class="logo-tagline">Secure. Store. Analyze.</p>
     </div>
