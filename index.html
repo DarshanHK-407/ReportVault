@@ -2,376 +2,582 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>ReportVault | Responsive Dashboard Preview</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+  <title>ReportVault - Modern SaaS Dashboard</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- Google Fonts for elegance -->
+  <link href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap" rel="stylesheet">
   <style>
-    /* ==================== CSS CUSTOM PROPERTIES ==================== */
-    :root {
-      --color-bg-light: #f8f5ec;
-      --color-bg-white: #ffffff;
-      --color-text-dark: #222f3e;
-      --color-primary: #3B82F6;
-      --color-secondary: #658572;
-      --color-border: #e0e0e0;
-      --color-shadow: rgba(44,62,80,0.07);
-      --color-shadow-hover: rgba(44,62,80,0.18);
-      --navbar-height: 4rem;
-    }
-
-    /* ==================== RESET & GLOBAL ==================== */
-    html {
-      box-sizing: border-box;
-    }
-    *, *::before, *::after {
-      box-sizing: inherit;
-    }
     body {
       margin: 0;
-      padding-top: var(--navbar-height);
-      background: var(--color-bg-light);
-      color: var(--color-text-dark);
-      font-family: 'Segoe UI', Arial, sans-serif;
+      font-family: 'Inter', Arial, sans-serif;
+      background: linear-gradient(135deg, #f0f2ff 0%, #e6e8f8 100%);
+      color: #223;
+      box-sizing: border-box;
       min-height: 100vh;
     }
-
-    /* ==================== NAVBAR ==================== */
     .navbar {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      height: var(--navbar-height);
-      background: var(--color-bg-white);
-      box-shadow: 0 2px 16px var(--color-shadow);
       display: flex;
       align-items: center;
       justify-content: space-between;
-      z-index: 100;
-      transition: background 0.2s;
+      padding: 0.75rem 2rem;
+      background: #fff;
+      box-shadow: 0 2px 12px rgba(34,51,115,0.05);
+      position: sticky;
+      top: 0;
+      z-index: 10;
     }
     .navbar-logo {
-      font-size: 1.8rem;
       font-weight: 700;
-      color: var(--color-text-dark);
-      margin-left: 2rem;
-      letter-spacing: 2px;
+      font-size: 1.45rem;
+      letter-spacing: 1px;
+      color: #24327a;
     }
-    .navbar-menu {
+    .nav-links {
       display: flex;
-      gap: 2rem;
-      margin-right: 2rem;
-    }
-    .navbar-menu a {
-      text-decoration: none;
-      color: var(--color-text-dark);
-      font-weight: 500;
+      gap: 1.3rem;
       font-size: 1rem;
-      padding: 0.5rem 0.7rem;
-      border-radius: 3px;
-      transition: background 0.2s;
     }
-    .navbar-menu a:hover,
-    .navbar-menu a:focus {
-      background: var(--color-bg-light);
-      outline: none;
+    .nav-links a {
+      text-decoration: none;
+      color: #223;
+      font-weight: 500;
+      transition: color 0.2s;
     }
-    /* Hamburger */
-    .navbar-toggle {
-      display: none;
-      background: none;
+    .nav-links a:hover {
+      color: #5061ee;
+    }
+    .login-btn {
+      background: linear-gradient(90deg, #5061ee 40%, #9C67FD 100%);
+      color: #fff;
       border: none;
-      margin-right: 1.2rem;
-      font-size: 1.8rem;
-      color: var(--color-text-dark);
+      border-radius: 8px;
+      padding: 8px 18px;
+      font-weight: 600;
+      letter-spacing: 0.5px;
       cursor: pointer;
+      box-shadow: 0 2px 8px rgba(80,97,238,0.07);
+      transition: background .2s;
     }
-    /* Mobile Navigation */
-    @media (max-width: 768px) {
-      .navbar-menu {
-        display: none;
-        flex-direction: column;
-        position: absolute;
-        right: 0;
-        top: var(--navbar-height);
-        background: var(--color-bg-white);
-        width: 100%;
-        box-shadow: 0 2px 16px var(--color-shadow);
-        border-bottom-left-radius: 8px;
-        border-bottom-right-radius: 8px;
-      }
-      .navbar-menu.open {
-        display: flex;
-      }
-      .navbar-toggle {
-        display: block;
-      }
-      .navbar-logo {
-        margin-left: 1rem;
-      }
-      .navbar-menu a {
-        margin: 0.5rem 1.2rem;
-      }
+    .login-btn:hover {
+      background: linear-gradient(90deg, #6D7BE7 40%, #AB7AEA 100%);
     }
 
-    /* ==================== LAYOUT SECTIONS ==================== */
-    .container {
-      width: 100%;
-      max-width: 1100px;
-      margin: 0 auto;
-      padding: 1.5rem;
-      box-sizing: border-box;
-    }
-
-    /* ==================== DASHBOARD PREVIEW ==================== */
-    .dashboard-preview {
-      width: 100%;
-      margin-bottom: 2.5rem;
-    }
-    .dashboard-img-wrapper {
+    /* Hero Section */
+    .hero-container {
       display: flex;
-      justify-content: center;
       align-items: center;
-      width: 100%;
+      justify-content: space-between;
+      padding: 3rem 2rem 1rem 2rem;
+      gap: 2.5rem;
+      min-height: 370px;
     }
-    .dashboard-img {
-      width: 100%;
-      max-width: 800px;
-      aspect-ratio: 16/9;
-      border-radius: 18px;
-      box-shadow: 0 4px 24px var(--color-shadow);
-      object-fit: cover;
-      border: 1px solid var(--color-border);
-      background: var(--color-bg-white);
-      transition: box-shadow 0.2s;
-    }
-    /* Fallback for browsers without aspect-ratio */
-    @supports not (aspect-ratio: 16/9) {
-      .dashboard-img {
-        height: 420px;
-      }
-    }
-
-    /* ==================== CTA SECTION BUTTONS ==================== */
-    .cta-section {
+    .hero-left {
+      flex: 1.3;
       display: flex;
       flex-direction: column;
+      gap: 1.2rem;
+      margin-top: 0.5rem;
+      min-width: 310px;
+    }
+    .hero-title {
+      font-size: 2.1rem;
+      font-weight: 700;
+      color: #24327a;
+      margin-bottom: 0.3rem;
+    }
+    .hero-desc {
+      font-size: 1.14rem;
+      color: #555;
+      line-height: 1.6;
+      margin-bottom: 0.2rem;
+    }
+    .cta-buttons {
+      display: flex;
+      gap: 1rem;
+      margin-top: 1rem;
+    }
+    .cta {
+      padding: 11px 32px;
+      font-size: 1.07rem;
+      border-radius: 8px;
+      font-weight: 600;
+      border: none;
+      cursor: pointer;
+      background: linear-gradient(90deg, #5061ee 50%, #9C67FD 100%);
+      color: #fff;
+      box-shadow: 0 4px 12px rgba(80,97,238,0.08);
+      transition: background 0.2s, box-shadow 0.2s;
+    }
+    .cta:hover {
+      background: linear-gradient(90deg, #6579ee 60%, #ab7aea 100%);
+      box-shadow: 0 6px 18px rgba(80,97,238,0.12);
+    }
+    .cta.secondary {
+      background: #fff;
+      color: #5061ee;
+      border: 2px solid #5061ee;
+      box-shadow: 0 4px 12px rgba(80,97,238,0.08);
+      transition: background 0.2s, border-color 0.2s;
+    }
+    .cta.secondary:hover {
+      background: #f0f2ff;
+      border-color: #9c67fd;
+      color: #9c67fd;
+    }
+    .hero-img {
+      flex: 1;
+      display: flex;
       align-items: center;
-      margin: 2rem 0 3rem 0;
+      justify-content: center;
+    }
+    .dashboard-preview {
+      width: 360px;
+      height: 220px;
+      border-radius: 20px;
+      box-shadow: 0 6px 32px rgba(44,62,115,0.15);
+      object-fit: cover;
+      border: 3px solid #f6f6fd;
+    }
+
+    /* Section Separator */
+    .separator {
+      width: 95%;
+      height: 2px;
+      margin: 2.2rem auto 1rem auto;
+      background: linear-gradient(90deg, #5061ee 0%, #9c67fd 60%, #e6e8f8 100%);
+      border: none;
+      opacity: 0.16;
+    }
+
+    /* KPI Cards */
+    .kpi-row {
+      display: flex;
+      justify-content: center;
+      gap: 1.6rem;
+      margin: 1.1rem 0;
+    }
+    .kpi-card {
+      flex: 1;
+      max-width: 180px;
+      background: #fff;
+      border-radius: 13px;
+      box-shadow: 0 2px 16px rgba(80,97,238,0.06);
+      padding: 1rem 1.2rem 1.1rem .9rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      border-top: 5px solid;
+      transition: box-shadow .2s, transform .2s;
+      cursor: pointer;
+      position: relative;
+    }
+    .kpi-card:hover {
+      box-shadow: 0 6px 20px rgba(112, 116, 238, 0.18);
+      transform: translateY(-2px) scale(1.03);
+    }
+    .kpi-icon {
+      font-size: 2rem;
+      margin-bottom: 0.13rem;
+      background: linear-gradient(90deg, #5061ee 40%, #9C67FD 70%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      background-clip: text;
+      text-fill-color: transparent;
+    }
+    .kpi-label {
+      font-size: 1.02rem;
+      color: #414558;
+      font-weight: 500;
+      margin-bottom: 0.19rem;
+    }
+    .kpi-value {
+      font-size: 1.35rem;
+      font-weight: bold;
+      color: #5061ee;
+    }
+    .kpi-card:nth-child(1) { border-top-color: #5061ee; }
+    .kpi-card:nth-child(2) { border-top-color: #9c67fd; }
+    .kpi-card:nth-child(3) { border-top-color: #48d1a5; }
+
+    /* Features Cards */
+    .features-grid {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 2rem;
+      justify-content: center;
+      margin-top: 2rem;
+      margin-bottom: 2.7rem;
+    }
+    .feature-card {
+      background: #fff;
+      border-radius: 13px;
+      box-shadow: 0 2px 16px rgba(80,97,238,0.08);
+      padding: 1.45rem 1.3rem 1.1rem 1.3rem;
+      width: 245px;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.2rem;
+      transition: box-shadow .22s, transform .22s;
+      cursor: pointer;
+      position: relative;
+    }
+    .feature-card:hover {
+      box-shadow: 0 6px 22px rgba(156,103,253, 0.15);
+      transform: translateY(-4px) scale(1.04);
+    }
+    .feature-icon {
+      font-size: 2.18rem;
+      margin-bottom: 0.32rem;
+      color: #5061ee;
+    }
+    .feature-title {
+      font-size: 1.17rem;
+      font-weight: 600;
+      color: #24327a;
+      margin-bottom: 0.13rem;
+    }
+    .feature-desc {
+      font-size: 1rem;
+      color: #353677;
+      opacity: 0.85;
+      margin-bottom: 0.06rem;
+    }
+
+    /* About Section */
+    .about-section {
+      width: 92%;
+      margin: 1.9rem auto;
+      padding: 1rem 0 0.5rem 0;
+      text-align: center;
+    }
+    .about-title {
+      font-size: 1.27rem;
+      font-weight: 700;
+      color: #24327a;
+      letter-spacing: 1px;
+      margin-bottom: 0.4rem;
+    }
+    .about-list {
+      display: flex;
+      justify-content: center;
+      gap: 2.3rem;
+      margin-top: .7rem;
+      flex-wrap: wrap;
+    }
+    .about-item {
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+      font-size: 1rem;
+      color: #5061ee;
+      font-weight: 500;
+      padding: 0.28rem 0.68rem;
+      background: #f0f2ff;
+      border-radius: 6px;
+    }
+    .about-item span {
+      font-size: 1.2rem;
+      color: #48d1a5;
+    }
+
+    /* Testimonials Section */
+    .testimonials-section {
+      width: 90%;
+      margin: 2rem auto;
+      text-align: center;
+    }
+    .testimonials-title {
+      font-size: 1.09rem;
+      font-weight: 700;
+      color: #24327a;
+      letter-spacing: 1.2px;
+      margin-bottom: 0.7rem;
+    }
+    .testimonials-list {
+      display: flex;
+      justify-content: center;
+      gap: 1.5rem;
+      flex-wrap: wrap;
+    }
+    .testimonial {
+      background: #fff;
+      border-radius: 13px;
+      box-shadow: 0 2px 16px rgba(80,97,238,0.07);
+      padding: 1.1rem 1.3rem 0.8rem 1.2rem;
+      width: 280px;
+      font-size: 1rem;
+      color: #464865;
+      margin-bottom: .8rem;
+      display: flex;
+      flex-direction: column;
+      align-items: flex-start;
+      gap: 0.4rem;
+    }
+    .testimonial-user {
+      font-size: 0.99rem;
+      color: #5061ee;
+      font-weight: 600;
+    }
+    .testimonial-role {
+      font-size: 0.89rem;
+      color: #9c67fd;
+      font-weight: 500;
+    }
+
+    /* Footer */
+    .footer {
+      background: #f4f4fa;
+      padding: 2rem 2rem 1rem 2rem;
+      color: #324;
+      border-top: 2px solid #e2e2f2;
+      margin-top: 3rem;
+      font-size: 1rem;
+    }
+    .footer-grid {
+      display: flex;
+      justify-content: space-between;
+      gap: 2.2rem;
+      flex-wrap: wrap;
+    }
+    .footer-col {
+      min-width: 170px;
+      margin-bottom: 1rem;
+    }
+    .footer-title {
+      color: #5061ee;
+      font-size: 1.03rem;
+      font-weight: 600;
+      margin-bottom: 0.6rem;
+    }
+    .footer-link {
+      display: block;
+      text-decoration: none;
+      color: #324;
+      margin-bottom: 0.35rem;
+      font-size: 1rem;
+    }
+    .footer-link:hover {
+      color: #9c67fd;
+    }
+    .footer-bottom {
+      text-align: center;
+      margin-top: 1rem;
+      font-size: .95rem;
+      color: #888;
+    }
+    .footer-social {
+      margin-top: .4rem;
+      display: flex;
       gap: 1.2rem;
     }
-    .cta-btn-group {
-      display: flex;
-      gap: 1.5rem;
-      width: 100%;
-      justify-content: center;
-      margin-top: 0.2rem;
+    .footer-social a {
+      font-size: 1.45rem;
+      color: #5061ee;
+      text-decoration: none;
+      transition: color .2s;
     }
-    .cta-btn {
-      font-size: 1.1rem;
-      padding: 0.75rem 2.4rem;
-      border-radius: 8px;
-      border: none;
-      cursor: pointer;
-      font-weight: 600;
-      transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out, box-shadow 0.2s;
-      outline: none;
+    .footer-social a:hover {
+      color: #9c67fd;
     }
-    .cta-btn-primary {
-      background: var(--color-primary);
-      color: var(--color-bg-white);
-      box-shadow: 0 2px 12px var(--color-shadow);
-      border: 2px solid var(--color-primary);
-    }
-    .cta-btn-primary:hover,
-    .cta-btn-primary:focus {
-      background: #2563eb;
-      color: var(--color-bg-white);
-      box-shadow: 0 8px 22px var(--color-shadow-hover);
-    }
-    .cta-btn-secondary {
-      background: transparent;
-      color: var(--color-primary);
-      border: 2px solid var(--color-primary);
-      box-shadow: none;
-      transition: background-color 0.2s ease-in-out, color 0.2s ease-in-out;
-    }
-    .cta-btn-secondary:hover,
-    .cta-btn-secondary:focus {
-      background: var(--color-primary);
-      color: var(--color-bg-white);
-      box-shadow: 0 8px 22px var(--color-shadow-hover);
-    }
-    @media (max-width: 768px) {
-      .cta-btn-group {
+
+    /* Responsive Design */
+    @media (max-width: 900px) {
+      .hero-container {
         flex-direction: column;
         gap: 1rem;
+        padding: 2rem 1rem 1rem 1rem;
+      }
+      .hero-img {
+        margin-bottom: 1.2rem;
+      }
+      .dashboard-preview {
         width: 100%;
+        height: 190px;
       }
-    }
-
-    /* ==================== CARD SYSTEM ==================== */
-    .cards-section {
-      margin-bottom: 2.5rem;
-    }
-    .card-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr 1fr;
-      gap: 2rem;
-    }
-    @media (max-width: 768px) {
-      .card-grid {
-        grid-template-columns: 1fr;
-        gap: 1.3rem;
+      .features-grid, .kpi-row {
+        flex-direction: column;
+        gap: 1rem;
+        align-items: center;
       }
-    }
-    .dashboard-card {
-      background: var(--color-bg-white);
-      padding: 2rem 1.2rem 1.5rem 1.2rem;
-      border-radius: 14px;
-      margin: 0;
-      box-shadow: 0 3px 16px var(--color-shadow);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      transition: box-shadow 0.3s ease, transform 0.3s ease;
-      border: 1px solid var(--color-border);
-      cursor: pointer;
-      min-height: 220px;
-    }
-    .dashboard-card:hover,
-    .dashboard-card:focus {
-      box-shadow: 0 10px 38px var(--color-shadow-hover);
-      transform: translateY(-5px);
-      outline: none;
-    }
-    .dashboard-card-icon {
-      font-size: 2.3rem;
-      margin-bottom: 1.1rem;
-      color: var(--color-primary);
-      aria-hidden: true;
-    }
-    .dashboard-card-title {
-      font-size: 1.25rem;
-      font-weight: 600;
-      margin-bottom: 0.7rem;
-      color: var(--color-text-dark);
-      text-align: center;
-    }
-    .dashboard-card-desc {
-      font-size: 1rem;
-      color: var(--color-secondary);
-      text-align: center;
-      margin-bottom: 0;
-    }
-
-    /* ==================== ACCESSIBILITY HIGHLIGHTS ==================== */
-    .dashboard-img:focus {
-      outline: 2px solid var(--color-primary);
-      outline-offset: 2px;
-    }
-    .dashboard-card:focus {
-      outline: 2px solid var(--color-primary);
-      outline-offset: 2px;
-    }
-
-    /* ==================== UTILITIES ==================== */
-    .sr-only {
-      position: absolute;
-      left: -9999px;
-      width: 1px;
-      height: 1px;
-      overflow: hidden;
+      .feature-card, .kpi-card {
+        width: 100%;
+        max-width: 370px;
+      }
+      .about-list, .testimonials-list, .footer-grid {
+        flex-direction: column;
+        gap: 1rem;
+      }
     }
   </style>
-</head>
-<body>
-  <!-- ==================== NAVBAR ==================== -->
-  <header class="navbar" role="banner" aria-label="Main Navigation">
-    <div class="navbar-logo" aria-label="ReportVault Logo">ReportVault</div>
-    <nav>
-      <button class="navbar-toggle" aria-label="Open navigation menu" aria-expanded="false" id="navbarToggle">
-        &#9776;
-      </button>
-      <ul class="navbar-menu" id="navbarMenu" role="menubar" aria-label="Site Menu">
-        <li><a href="#dashboard" role="menuitem" tabindex="0">Dashboard</a></li>
-        <li><a href="#features" role="menuitem" tabindex="0">Features</a></li>
-        <li><a href="#cta" role="menuitem" tabindex="0">Get Started</a></li>
-      </ul>
-    </nav>
-  </header>
-
-  <main>
-    <!-- ==================== DASHBOARD PREVIEW ==================== -->
-    <section class="dashboard-preview container" id="dashboard" aria-labelledby="dashboard-preview-title">
-      <h1 id="dashboard-preview-title" class="sr-only">Dashboard Preview</h1>
-      <div class="dashboard-img-wrapper">
-        <img 
-          src="https://images.unsplash.com/photo-1506744038136-46273834b3fb?auto=format&fit=crop&w=800&q=80"
-          alt="Preview of ReportVault Dashboard with charts and metrics"
-          class="dashboard-img"
-          loading="lazy"
-          tabindex="0"
-          aria-describedby="dashboard-preview-desc"
-        />
-      </div>
-      <div id="dashboard-preview-desc" class="sr-only">This is a preview image showing the layout and data visualization of ReportVault's dashboard.</div>
-    </section>
-
-    <!-- ==================== CTA SECTION ==================== -->
-    <section class="cta-section container" id="cta" aria-labelledby="cta-title">
-      <h2 id="cta-title" class="sr-only">Get Started Call to Action</h2>
-      <div class="cta-btn-group" role="group" aria-label="CTA Buttons">
-        <button class="cta-btn cta-btn-primary" type="button" aria-label="Start Free Trial">Start Free Trial</button>
-        <button class="cta-btn cta-btn-secondary" type="button" aria-label="Contact Sales">Contact Sales</button>
-      </div>
-    </section>
-
-    <!-- ==================== CARD SYSTEM ==================== -->
-    <section class="cards-section container" id="features" aria-labelledby="features-title">
-      <h2 id="features-title" class="sr-only">Feature Cards</h2>
-      <div class="card-grid">
-        <article class="dashboard-card" tabindex="0" aria-labelledby="card-title-1">
-          <div class="dashboard-card-icon" aria-hidden="true">📊</div>
-          <div class="dashboard-card-title" id="card-title-1">Analytics</div>
-          <p class="dashboard-card-desc">Real-time data visualizations and actionable insights to power your business.</p>
-        </article>
-        <article class="dashboard-card" tabindex="0" aria-labelledby="card-title-2">
-          <div class="dashboard-card-icon" aria-hidden="true">📁</div>
-          <div class="dashboard-card-title" id="card-title-2">Document Management</div>
-          <p class="dashboard-card-desc">Organize, secure, and access important business documents from anywhere.</p>
-        </article>
-        <article class="dashboard-card" tabindex="0" aria-labelledby="card-title-3">
-          <div class="dashboard-card-icon" aria-hidden="true">🔒</div>
-          <div class="dashboard-card-title" id="card-title-3">Security</div>
-          <p class="dashboard-card-desc">Advanced protection—your data is encrypted and safe in the vault.</p>
-        </article>
-      </div>
-    </section>
-  </main>
-
-  <!-- ==================== ACCESSIBLE FOOTER ==================== -->
-  <footer style="background: var(--footer-bg); text-align: center; padding: 2rem 1rem; color: var(--color-secondary); font-size: 1rem; border-top: 1px solid var(--color-border);">
-    &copy; 2026 ReportVault &ndash; Secure. Store. Analyze.<br>
-    Created & Developed by <strong style="color: var(--color-text-dark);">Darshan H K</strong>
-  </footer>
-
-  <!-- ==================== NAVBAR MOBILE TOGGLE SCRIPT ==================== -->
+  <!-- For animated counter (Optional Premium) -->
   <script>
-    // Basic mobile menu toggle
-    const toggleBtn = document.getElementById('navbarToggle');
-    const menu = document.getElementById('navbarMenu');
-    toggleBtn.addEventListener('click', function(){
-      const expanded = menu.classList.toggle('open');
-      toggleBtn.setAttribute('aria-expanded', expanded);
-    });
-    // Accessibility: close menu when focus moves elsewhere on mobile
-    document.addEventListener('click', function(e){
-      if(window.innerWidth <= 768 && !menu.contains(e.target) && !toggleBtn.contains(e.target)){
-        menu.classList.remove('open');
-        toggleBtn.setAttribute('aria-expanded', false);
-      }
+    document.addEventListener('DOMContentLoaded', () => {
+      // Count up animation for KPIs (if present)
+      const animateCount = (el, target) => {
+        let count = 0, step = Math.ceil(target/30);
+        const update = () => {
+          count += step;
+          if (count >= target) {
+            el.textContent = target;
+          } else {
+            el.textContent = count;
+            requestAnimationFrame(update);
+          }
+        };
+        update();
+      };
+      document.querySelectorAll('.kpi-value[data-animate]').forEach(el => {
+        animateCount(el, parseInt(el.dataset.animate, 10));
+      });
     });
   </script>
+</head>
+<body>
+  <!-- Navigation Bar -->
+  <nav class="navbar">
+    <div class="navbar-logo">ReportVault</div>
+    <div class="nav-links">
+      <a href="#">Home</a>
+      <a href="#">Features</a>
+      <a href="#">Reports</a>
+      <a href="#">Dashboards</a>
+      <a href="#">Contact</a>
+      <button class="login-btn">Login</button>
+    </div>
+  </nav>
+
+  <!-- Hero Section -->
+  <section class="hero-container">
+    <div class="hero-left">
+      <div class="hero-title">Modern Business Analytics & Reporting Platform</div>
+      <div class="hero-desc">Your secure solution for financial reporting, advanced analytics, and real-time dashboards. <br> Move your business forward with insight-driven decisions and robust document management.</div>
+      <div class="cta-buttons">
+        <button class="cta">Get Started</button>
+        <button class="cta secondary">Explore Reports</button>
+      </div>
+    </div>
+    <!-- Hero Image/Dashboard Preview -->
+    <div class="hero-img">
+      <img 
+        class="dashboard-preview"
+        src="https://images.unsplash.com/photo-1465101046530-73398c7b6401?auto=format&fit=crop&w=800&q=80"
+        alt="Dashboard Preview - Sample analytics"
+      />
+    </div>
+  </section>
+
+  <hr class="separator">
+
+  <!-- KPI Cards -->
+  <section class="kpi-row">
+    <div class="kpi-card">
+      <div class="kpi-icon">📈</div>
+      <div class="kpi-label">Reports Generated</div>
+      <div class="kpi-value" data-animate="320">320</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-icon">👤</div>
+      <div class="kpi-label">Active Users</div>
+      <div class="kpi-value" data-animate="48">48</div>
+    </div>
+    <div class="kpi-card">
+      <div class="kpi-icon">🔐</div>
+      <div class="kpi-label">Secured Files</div>
+      <div class="kpi-value" data-animate="1200">1200</div>
+    </div>
+  </section>
+
+  <hr class="separator">
+
+  <!-- Features Cards -->
+  <section class="features-grid">
+    <div class="feature-card">
+      <div class="feature-icon">📊</div>
+      <div class="feature-title">Financial Reporting</div>
+      <div class="feature-desc">Create, manage, and share detailed financial reports effortlessly.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📈</div>
+      <div class="feature-title">Business Analytics</div>
+      <div class="feature-desc">Visualize trends and unlock actionable business insights.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">🏆</div>
+      <div class="feature-title">KPI Dashboards</div>
+      <div class="feature-desc">Monitor key metrics and drive performance in real-time.</div>
+    </div>
+    <div class="feature-card">
+      <div class="feature-icon">📁</div>
+      <div class="feature-title">Document Management</div>
+      <div class="feature-desc">Securely organize critical documents with advanced access controls.</div>
+    </div>
+  </section>
+
+  <hr class="separator">
+
+  <!-- Why Choose ReportVault / About Section -->
+  <section class="about-section">
+    <div class="about-title">Why Choose ReportVault?</div>
+    <div class="about-list">
+      <div class="about-item"><span>✓</span> Secure Storage</div>
+      <div class="about-item"><span>✓</span> Advanced Analytics</div>
+      <div class="about-item"><span>✓</span> Role-Based Access</div>
+      <div class="about-item"><span>✓</span> Real-Time Reporting</div>
+    </div>
+  </section>
+
+  <hr class="separator">
+
+  <!-- Testimonials Section -->
+  <section class="testimonials-section">
+    <div class="testimonials-title">What our users say:</div>
+    <div class="testimonials-list">
+      <div class="testimonial">
+        “ReportVault has become our go-to for generating business reports and monitoring KPIs. Highly recommended.”
+        <div class="testimonial-user">— Ms. A. Mehta</div>
+        <div class="testimonial-role">Finance Manager</div>
+      </div>
+      <div class="testimonial">
+        “The dashboard analytics are fantastic and the UI is so easy to use. We love the secure document features.”
+        <div class="testimonial-user">— T. Robinson</div>
+        <div class="testimonial-role">Business Analyst</div>
+      </div>
+      <div class="testimonial">
+        “Finally a reporting tool that lets everyone see exactly what matters. Setup was quick and support is great.”
+        <div class="testimonial-user">— K. Rao</div>
+        <div class="testimonial-role">Operations Lead</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-col">
+        <div class="footer-title">Quick Links</div>
+        <a class="footer-link" href="#">Home</a>
+        <a class="footer-link" href="#">Features</a>
+        <a class="footer-link" href="#">Reports</a>
+        <a class="footer-link" href="#">Dashboards</a>
+        <a class="footer-link" href="#">Contact</a>
+      </div>
+      <div class="footer-col">
+        <div class="footer-title">Contact</div>
+        <div class="footer-link">info@reportvault.com</div>
+        <div class="footer-link">+91-98765-43210</div>
+      </div>
+      <div class="footer-col">
+        <div class="footer-title">Follow Us</div>
+        <div class="footer-social">
+          <a href="https://linkedin.com/" title="LinkedIn" target="_blank">🔗</a>
+          <a href="https://github.com/" title="GitHub" target="_blank">🐙</a>
+        </div>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      &copy; 2026 ReportVault &nbsp; | &nbsp; Created & Developed by Darshan H K
+    </div>
+  </footer>
 </body>
 </html>
